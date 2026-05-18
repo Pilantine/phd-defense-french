@@ -1,0 +1,80 @@
+
+\ibenj{Finalement, le lemme ci-dessous est faux. Exemple : $T = \bigoplus_i P_i$ et $\mathcal{E} = \mathcal{E}_{\max}$. D'après un résultat précédent, $\GS_{\mathcal{E}}^1(T) = \rep(Q)$, pourtant nous ne pouvons pas atteindre tous les indécomposables de $\rep(Q)$ via une seule mutation en partant des projectifs pour $Q$ assez grand.}
+
+\begin{lemma} \label{lem:crucialTreaching}
+    Let $T \in \Tilt(Q)$ and $X \in \ind(Q)$. If $X \in \GS_\mathcal{E}^1(T)$, then $X \in \add(T)$ or $X \in \add(\pmb{\mu}_{U,\mathcal{E}}(T))$ for some indecomposable summand $U$ in $T$.
+\end{lemma}
+
+\begin{proof}
+    Recall that $Q$ is an $ADE$ type quiver. We can easily check this property for $n \leqslant 2$. Let us assume that $X \in \GS_\mathcal{E}^1(T)$. If $X \in \add(T)$, the result occurs. Assume that $X \notin \add(T)$. So $X \in \Gen_\mathcal{E}(T)$ or $X \in \Sub_\mathcal{E}(T)$. In the following, we assume that $X \in \Gen_\mathcal{E}(T)$; the other case can be treated dually.
+
+    By \cref{lem:TiltandApprox}, $X$ admits a right $(\add(T), \mathcal{E})$-approximation$\begin{tikzcd}
+	g : \Theta & X.
+	\arrow[two heads,from=1-1, to=1-2]
+    \end{tikzcd}$ We get the following $\mathcal{E}$-exact sequence.
+     \[\begin{tikzcd}
+	\xi : 0 & Y & \Theta  & X &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow["g",two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+    \end{tikzcd} \]
+    By \cref{prop:Approxismonoepi}, we have that $X$ admits a minimal right $\add(T)$-approximation $\begin{tikzcd}
+	g': \Theta' & X 
+        \arrow[two heads,from=1-1, to=1-2]
+    \end{tikzcd}$ which is, by \cref{prop:Approxismonoepi2}, an $\mathcal{E}$-epimorphism. By setting $U = \Ker(g')$, we got the following $\mathcal{E}$-exact sequence
+    \[\begin{tikzcd}
+	\xi_0 : 0 & U & \Theta' & X &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow["g'",two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+    \end{tikzcd} \] 
+    where $\Theta' \in \add(T)$. Therefore, by the fact that $g'$ is minimal, the following assertions hold:
+    \begin{enumerate}[label=$\bullet$, itemsep=1mm]
+        \item as, in addition, $X \in \ind(Q)$, then $U \in \ind(Q)$; \benj{Problème...} 
+        \item by \cref{lem:Ibra}, we also have that $U \in \add(T)$;
+        \item $U \notin \add(\Theta')$; and,
+        \item there exists $\begin{tikzcd}
+	\psi: \Theta' & \Theta
+        \arrow[from=1-1, to=1-2]
+    \end{tikzcd}$ such that $g' \psi = g$.
+    \end{enumerate}  
+    
+     Write $T = \widetilde{T} \oplus U$. Then $\pmb{\mu}_{U,\mathcal{E}}(T) = \widetilde{T} \oplus X$. We got the desired result. Dually, if $X \in \Sub(T)$, we get the same outcome. \qedhere
+\end{proof}
+
+\begin{theorem}
+\label{th:Treaching}
+Let $T \in \Tilt(Q)$. Then \[\GS_{\mathcal{E}}(T) = \add\left(\bigoplus_{T' \in [T]_{\approx_{\mathcal{E}}}} T' \right).\]
+\end{theorem}
+
+\begin{proof}
+First of all, \[\add\left(\bigoplus_{T' \in [T]_{\approx_{\mathcal{E}}}} T' \right) \subseteq  \GS_{\mathcal{E}}(T)\] by \cref{prop:Tstable}. We still must show the other inclusion. To do so, we prove by induction that, for any $m \in \mathbb{N}$, if $X \in \ind(Q)$ is in $\GS_{\mathcal{E}}^m(T)$, then $X \in \add(T')$ for some tilting representation $T' \in [T]_{\approx_{\mathcal{E}}}$. The initialisation step is obvious as $\GS^0_{\mathcal{E}}(T) = \add(T)$. 
+
+Fix $m \in \mathbb{N}$. Assume that, if $X \in \ind(Q)$ is in $\GS^m_{\mathcal{E}}(T)$, then $X \in \add(T')$ for some tilting object $T' \in [T]_{\approx_{\mathcal{E}}}$.
+
+Let $X \in \ind(Q)$ such that $X \in \GS^{m+1}_{\mathcal{E}}(T)$. We have two cases to treat. 
+
+Assume that $X \in \Gen_{\mathcal{E}}(\GS^{m}_{\mathcal{E}}(T))$. Then then we have the following short $\mathcal{E}$-exact sequence
+\[\begin{tikzcd}
+	0 & K & E  & X &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $E \in \GS^{n}_{\mathcal{E}}(T)$. By induction hypothesis, there exists $T' \in [T]_{\approx_\mathcal{E}}$ such that $E \in \add(T')$. 
+Given that, $X \in \GS^{1}_\mathcal{E}(T')$, and by \cref{lem:crucialTreaching}, we have that $X \in \add(T'')$ for some tilting object $T'' \in [T]_{\approx_\mathcal{E}}$ 
+
+If $X \in \Sub_{\mathcal{E}}(\GS^{m}_{\mathcal{E}}(T))$, then we have the following $\mathcal{E}$-admissible short exact sequence:
+\[\begin{tikzcd}
+	0 & X & E  & C &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $E \in \GS^{m}_\mathcal{E}(T)$. By induction hypothesis, then $E \in \add(T')$ 
+for some tilting object $T' \in [T]_{\approx_\mathcal{E}}$. If $X \in \GS^{1}_\mathcal{E}(T')$, we have $X \in \add(T'')$ for some tilting object $T'' \in [T]_{\approx_\mathcal{E}}$ by \cref{lem:crucialTreaching}. 
+
+This concludes the induction proof, and the desired result occurs.
+\end{proof}

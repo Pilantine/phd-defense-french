@@ -1,0 +1,952 @@
+\pagestyle{plain}
+
+\subsection{Exact structures}
+\label{ss:genonexactstructure}
+
+Let $\mathscr{A}$ be an abelian category.
+%\benj{Dire quelques mots pour introduire des notations pour les suites exactes courtes ?}\Sunny{Ici, je trouve le tout très clair, je ne sais pas ce que tu avais en tête?} \benj{Je pense à amener quelques généralités : Qu'est-ce qu'une suite exacte ? Donner une notation propre aux suites exactes pour distinguer du Ext1 ? etc...} 
+Recall that two short exact sequences in $\mathscr{A}$ \[\begin{tikzcd}
+	\xi : & 0 & D & E & F &  0 \\
+    \varsigma: & 0 & X & Y & Z &  0
+	\arrow[from=1-2, to=1-3]
+	\arrow["f",tail, from=1-3, to=1-4]
+	\arrow["g",two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+	\arrow[from=2-2, to=2-3]
+	\arrow["i",tail, from=2-3, to=2-4]
+	\arrow["j",two heads,from=2-4, to=2-5]
+	\arrow[from=2-5, to=2-6]
+\end{tikzcd} \] are said to be {\em isomorphic} whenever there exists a triplet of isomorphisms \[\left(\begin{tikzcd}
+	D & X
+	\arrow[Plum,"\phi",from=1-1, to=1-2]
+\end{tikzcd}, \begin{tikzcd}
+	E & Y
+	\arrow[Plum,"\psi",from=1-1, to=1-2]
+\end{tikzcd}, \begin{tikzcd}
+	F & Z
+	\arrow[Plum,"\mu",from=1-1, to=1-2]
+\end{tikzcd} \right)\] such that every square in the following diagram commutes.
+\[\begin{tikzcd}
+	\xi : & 0 & D & E & F &  0 \\
+    \varsigma: & 0 & X & Y & Z &  0
+	\arrow[from=1-2, to=1-3]
+	\arrow["f",tail, from=1-3, to=1-4]
+        \arrow[Plum,"\phi",from=1-3, to=2-3]
+	\arrow["g",two heads,from=1-4, to=1-5]
+        \arrow[Plum,"\psi",from=1-4, to=2-4]
+	\arrow[from=1-5, to=1-6]
+        \arrow[Plum,"\mu",from=1-5, to=2-5]
+	\arrow[from=2-2, to=2-3]
+	\arrow["i",tail, from=2-3, to=2-4]
+	\arrow["j",two heads,from=2-4, to=2-5]
+	\arrow[from=2-5, to=2-6]
+\end{tikzcd} \] 
+From now on, by abusing notations, we identify a short exact sequence with its isomorphism class of short exact sequences. Fix a subcollection $\mathcal{E}$ of short exact sequences in $\mathscr{A}$. A short exact sequence \[\begin{tikzcd}
+	\xi: & 0 & A & E & B &  0
+	\arrow[from=1-2, to=1-3]
+	\arrow["f",tail, from=1-3, to=1-4]
+	\arrow["g",two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd} \] is said to be \new{$\mathcal{E}$-admissible} if $\xi \in \mathcal{E}$. In such a case, we say that the map $f$ is said to be an \emph{$\mathcal{E}$-monomorphism}, and the map $g$ is said to be an \emph{$\mathcal{E}$-epimorphism}. Considering the short exact sequences up to isomorphism, the definitions of $\mathcal{E}$-admissible short exact sequences, $\mathcal{E}$-monomorphisms, and $\mathcal{E}$-epimorphisms are interdependent, uniquely determining each other within this framework.
+
+Quillen’s original formulation of exact structures thus encapsulates these relationships, providing a robust foundation for applying homological constructs in settings that deviate from traditional abelian categories. The Quillen definition can be rephrased as follows.
+
+\begin{definition}\label{def:exact}
+A collection $\mathcal{E}$ of short exact sequence in $\mathscr{A}$ is an \new{exact structure} on $\mathscr{A}$ whenever $\mathcal{E}$ satisfies the following axioms:
+\begin{enumerate}[label=$(\mathsf{ES} \arabic*)$,itemsep=1mm]
+    \item All the split short exact sequences are in $\mathcal{E}$;
+  
+    \item The collection of $\mathcal{E}$-admissible monomorphisms and the one of $\mathcal{E}$-admissible epimorphisms are both closed under compositions;
+    
+    \item $\mathcal{E}$ is closed under the pushouts along any morphism: that is, any short exact sequence \[\begin{tikzcd}
+	0 & X & Y & Z & 0 \\ 0 & D & PO & Z & 0 ,
+	\arrow[from=1-1, to=1-2]
+	\arrow["f",tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+    \arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+    \arrow["h",from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+    \arrow[equal,from=1-4, to=2-4]
+ \end{tikzcd} \] where $f$ is an $\mathcal{E}$-admissible monomorphism gives a short exact sequence is in $\mathcal{E}$ whenever taking the pushout along any morphism $h$;
+    
+\item $\mathcal{E}$ is closed under the pullbacks along any morphism: that is, any short exact sequence \[\begin{tikzcd}
+	0 & X & Y & Z & 0 \\ 0 & X & PB & F & 0 ,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow["g",two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+    \arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+    \arrow[equal,from=1-2, to=2-2]
+	\arrow[from=2-3, to=1-3]
+    \arrow["h",from=2-4, to=1-4]
+ \end{tikzcd} \]where $g$ is an $\mathcal{E}$-admissible epimorphism gives a short exact sequence in $\mathcal{E}$ whenever taking the pullback along any morphism $h$.
+\end{enumerate}
+If $\mathcal{E}$ is an exact structure on $\mathscr{A}$, then we refer to the pair $(\mathscr{A},\mathcal{E})$ as an \new{exact category}. We also refer to the exact structure containing all short exact sequences as $\mathcal{E}_{\max}$. We denote the subbifunctor of $\Ext^1_\mathscr{A}(-,-)$ as $\mathcal{E}(-,-)$, which selects only the extensions in $\mathcal{E}$. 
+\end{definition}
+
+\begin{definition}\label{def:Eprojectivesinjectives}
+Let $(\mathscr{A}, \mathcal{E})$ be an exact category.
+\begin{enumerate}[label=$\bullet$,itemsep=1mm]
+    \item An object $P$ in $\mathscr{C}$ is \new{$\mathcal{E}$-projective} if for every $\mathcal{E}$-admissible epimorphism $g: Y \to Z$, the map $g_* = \Hom_\mathscr{A}(P,g)$ is an epimorphism across all $Y, Z$ in $\mathscr{C}$. Equivalently, $P$ is $\mathcal{E}$-projective if the functor $\Hom_\mathscr{A}(P,-)$ preserves the exactness of $\mathcal{E}$-admissible sequences. We write $\proj(\mathscr{A},\mathcal{E})$ for the collection of $\mathcal{E}$-projective objects in $\mathscr{A}$. We observe that $\proj(\mathscr{A},\mathcal{E}_{max}) = \proj(\mathscr{A})$.
+    \item An object $I$ in $\mathscr{C}$ is \new{$\mathcal{E}$-injective} if for every $\mathcal{E}$-admissible monomorphism $f: X \to Y$, the map $f^* = \Hom_\mathscr{C}(f,I)$ is an epimorphism across all $X, Y$ in $\mathscr{C}$. Equivalently, $I$ is $\mathcal{E}$-injective if the functor $\Hom_\mathscr{C}(-,I)$ preserves the exactness of $\mathcal{E}$-admissible sequences. We write $\inj(\mathscr{A},\mathcal{E})$ for the collection of $\mathcal{E}$-injective objects in $\mathscr{A}$. We observe that $\inj(\mathscr{A},\mathcal{E}_{max}) = \inj(\mathscr{A})$.
+\end{enumerate}
+\end{definition}
+
+We recall and restate some beneficial results on diagrams where the exact structure $\mathcal{E}$ intervenes, based on the work of T. Bühler \cite{B10}.
+
+\begin{lemma}[$3 \times 3$-lemma] \label{lem:3x3}
+Let $(\mathscr{A}, \mathcal{E})$ be an exact category. Consider the following commutative diagram.
+\[\begin{tikzcd}
+         & 0 & 0 & 0 &  \\
+	& A & B  & C &   \\
+      & A' & B' & C' &  \\
+       & A'' & B'' & C'' &  \\
+       & 0 & 0 & 0 & 
+	%\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	%\arrow[from=2-4, to=2-5]
+        %\arrow[from=3-1, to=3-2]
+	\arrow["f",from=3-2, to=3-3]
+	\arrow["g",from=3-3, to=3-4]
+	%\arrow[from=3-4, to=3-5]
+        %\arrow[from=4-1, to=4-2]
+	\arrow[from=4-2, to=4-3]
+	\arrow[from=4-3, to=4-4]
+	%\arrow[from=4-4, to=4-5]
+        \arrow[from=4-2, to=5-2]
+	\arrow[two heads, from=3-2, to=4-2]
+	\arrow[tail,from=2-2, to=3-2]
+	\arrow[from=1-2, to=2-2]
+        \arrow[from=4-3, to=5-3]
+	\arrow[two heads, from=3-3, to=4-3]
+	\arrow[tail,from=2-3, to=3-3]
+	\arrow[from=1-3, to=2-3]
+        \arrow[from=4-4, to=5-4]
+	\arrow[two heads, from=3-4, to=4-4]
+	\arrow[two heads,from=2-4, to=3-4]
+	\arrow[from=1-4, to=2-4]
+\end{tikzcd} \]
+Assume that:
+\begin{enumerate}[label=$\bullet$, itemsep=1mm]
+    \item all the short sequences given by the columns are $\mathcal{E}$-exact; and,
+    \item one of the following assertions holds:
+    \begin{enumerate}[label=$\bullet$,itemsep=1mm]
+        \item two out of the three rows, including the middle one, give short $\mathcal{E}$-exact sequences; or,
+        \item the short sequences given by the top and the bottom rows are $\mathcal{E}$-exact, and $gf = 0$.
+    \end{enumerate}
+\end{enumerate}
+Then the short sequence given by the remaining row is $\mathcal{E}$-exact.
+\end{lemma}
+
+\begin{remark} \label{rem:dual3x3}
+    We can exchange the role of the rows and the columns to get a dual result applied on the columns of such a diagram.
+\end{remark}
+
+\begin{lemma}[Obscure axiom] \label{lem:obscure}
+Let $(\mathscr{A}, \mathcal{E})$ be an exact category. Let $X,Y \in \mathscr{A}$ and $i : X \longrightarrow Y$. If there exist $Z \in \mathscr{A}$, and $j : Y \longrightarrow Z$ such that $j \circ i$ is an $\mathcal{E}$-monomorphism, then $i$ is an $\mathcal{E}$-monomorphism. Dually, it holds for $\mathcal{E}$-epimorphisms.
+\end{lemma}
+
+\begin{remark} \label{rem:obscure}
+    This lemma was originally stated as an axiom from D. Quillen's definition of an exact category \cite{Q73}. At that time, N. Yoneda proved in his thesis \cite{Y61} that this axiom is a consequence of the other axioms. Later on, B. Keller \cite{K90} rediscovered this redundancy. The name ``obscure axiom" was given by R. W. Thomason and T. Trobaugh \cite{TT07}
+\end{remark}
+
+\subsection{Gen-Sub operators}
+\label{ss:GenSuboperators}
+
+Fix $(\mathscr{A},\mathcal{E})$ an exact category. 
+
+\begin{definition} \label{def:Eadpted}
+    A full subcategory $\mathscr{D} \subseteq \mathscr{A}$ is \new{$\mathcal{E}$-adapted} if for any pair $(X,Y)$ of objects in $\mathscr{C}$, we have $\Ext^1(X,Y) \subseteq \mathcal{E}$
+\end{definition}
+\begin{ex} Any full subcategory of $\mathscr{A}$ is $\mathcal{E}_{\max}$-adapted.
+\end{ex}
+This section introduces a closure operator on subcategories of $\mathscr{A}$. More precisely, given a subcategory $\mathscr{C}$, we will construct the smallest subcategory $\mathscr{D} \supseteq \mathscr{C}$ such that:
+\begin{enumerate}[label=$\bullet$,itemsep=1mm]
+    \item $\mathscr{D}$ is closed under cokernel of $\mathcal{E}$-admissible monomorphisms; and,
+    \item  $\mathscr{D}$ is closed under kernel of $\mathcal{E}$-admissible epimorphisms.
+\end{enumerate}
+
+The \new{$\Gen_\mathcal{E}$-operator} on subcategories of $\mathscr{A}$ is defined as follows: given a subcategory $\mathscr{C} \subseteq \mathscr{A}$, we define $\Gen_\mathcal{E}(\mathscr{C})$ as the full subcategory, closed under sums and summands, of $\mathscr{A}$ containing the cokernel of any $\mathcal{E}$-admissible monomorphism $f : X \longrightarrow Y$ such that $Y \in \mathscr{C}$. The \new{$\Sub_\mathcal{E}$-operator} on subcategories of $\mathscr{A}$ is defined analogously: given a subcategory $\mathscr{C} \subseteq \mathscr{A}$, we define $\Sub_\mathcal{E}(\mathscr{C})$ as the full subcategory, closed by sums and summands, of $\mathscr{A}$ containing the kernel of any $\mathcal{E}$-admissible epimorphism $g : Y \longrightarrow X$  such that $Y \in \mathscr{C}$. Given an object $M \in \mathscr{C}$, by abusing of notation, we set $\Gen_\mathcal{E}(M) = \Gen_\mathcal{E}(\add(M))$ and $\Sub_\mathcal{E}(M) = \Sub_\mathcal{E}(\add(M))$.
+
+Note that $\Gen_{\mathcal{E}_{\max}}(\mathscr{C}) = \Gen(\mathscr{C})$ and $\Sub_{\mathcal{E}_{\max}}(\mathscr{C}) = \Sub(\mathscr{C})$. As $\mathcal{E}$ is an exact structure on $\mathscr{A}$, then $\mathscr{C}$ is a subcategory of both $\Gen_\mathcal{E}(\mathscr{C})$ and $\Sub_\mathcal{E}(\mathscr{C})$. %\benj{Penses-tu qu'on puisse dire des choses sur l'intersection des deux ?}
+%\Sunny{Si la catégorie $\mathscr{C}$ est partiellement tilting, l'intersection se trouve dans les compléments de $\mathscr{C}$, sinon ça peut-être n'importe quoi.}
+
+Given a subcategory $\mathscr{C} \subseteq \mathscr{A}$, we define a sequence of subcategories $(\GS^i(\mathscr{C}))_{i\in \mathbb{N}}$ as it follows:
+\begin{enumerate}[label=$\bullet$, itemsep=1mm]
+    \item we set $\GS^0(\mathscr{C}) = \mathscr{C}$; and,
+    \item for all $i \geqslant 1$, we define $\GS^{i}_{\mathcal{E}}(\mathscr{C})$ to be the full additive subcategory of $\mathscr{A}$ whose objects are given by both those in $\Gen_{\mathcal{E}}(\GS^{i-1}_{\mathcal{E}}(\mathscr{C}))$, and those in $\Sub_{\mathcal{E}}(\GS^{i-1}_{\mathcal{E}}(\mathscr{C}))$.
+\end{enumerate}
+By the previous remark, $(\GS^i(\mathscr{C}))_{i\in \mathbb{N}}$ is an increasing sequence of additive subcategories of $\mathscr{A}$. Therefore, as $\mathscr{A}$ is abelian, this sequence of subcategories admits a colimit.
+
+\begin{definition} \label{def:GSop}
+    The \new{$\GS_\mathcal{E}$-operator} on subcategories of $\mathscr{A}$ is defined as follows: given a subcategory $\mathscr{C} \subseteq \mathscr{A}$, we define $\GS_{\mathcal{E}}(\mathscr{C})$ as the colimit of the sequence of subcategories $(\GS_\mathcal{E}^i(\mathscr{C}))_{i\in \mathbb{N}}$. As before, we set $\GS_\mathcal{E}(M) = \GS_\mathcal{E}(\add(M))$ by abuse of notations.
+\end{definition}
+
+Here are some apparent results coming directly from the definition.
+
+\begin{lemma} \label{lem:proponGS}
+Let $\mathscr{C} \subseteq \mathscr{A}$. The following assertions hold:
+\begin{enumerate}[label=$(\alph*)$,itemsep=1mm]
+    \item The category $\GS_\mathcal{E}(\mathscr{C})$ is the full additive subcategory of $\mathscr{A}$ whose objects are the ones appearing in $\GS^i(\mathscr{C})$ for some $i \in \mathbb{N}$.
+    \item  The category $\GS_\mathcal{E}(\mathscr{C})$ is the smallest subcategory $\mathscr{A}$ containing $\mathscr{C}$, closed under kernel of $\mathcal{E}$-admissible epimorphisms, and cokernel of $\mathcal{E}$-admissible monomorphisms. \benj{$\mathcal{E}-$Thick or Serre?} %\benj{Est-ce que cela veut dire que la catégorie est clôs par $\mathcal{E}$-extensions ?} \Sunny{Non, ça m'a pris un temps de fou montrer cela :P (Prop 2.19) }
+\end{enumerate}
+\end{lemma}
+
+\subsection{Hereditary subcategories}
+\label{ss:Her} Let $(\mathscr{A},\mathcal{E})$ be an exact category. We recall that $\mathscr{A}$ is \emph{hereditary} if, for all $X,Y \in \mathscr{A}$, and for all $i \in \mathbb{N}_{\geqslant 2}$, we have $\Ext_\mathscr{A}^i(X,Y) = 0$. 
+
+\begin{conv} \label{conv:hereditary}
+    From now on, $\mathscr{A}$ is a hereditary abelian category.
+\end{conv}
+
+In this section, we will show that for any $\mathcal{E}$-adapted subcategory $\mathscr{C} \subseteq \mathscr{A}$, the category $\GS_\mathcal{E}(\mathscr{C})$ is also $\mathcal{E}$-adapted.
+
+\begin{lemma}
+\label{lem:GenlocalEadapt}
+Consider a full subcategory $\mathscr{C} \subseteq \mathscr{A}$. Let $D,E \in \mathscr{C}$ such that $\Ext^1(D,E) \subseteq \mathcal{E}$. Then, for any $X \in \Gen(E)$, the following assertions hold:
+\begin{enumerate}[label=$(\alph*)$,itemsep=1mm]
+   \item Any $\xi \in \Ext^1(D,X)$ is obtained by a pushout of some $\eta \in \Ext^1(D,E)$ along an epimorphism $ \begin{tikzcd}
+	 g : E & X;
+	\arrow[two heads,from=1-1, to=1-2]
+   \end{tikzcd}$ and,
+   \item $\Ext^1(D,X) \subseteq \mathcal{E}$.
+\end{enumerate}
+Furthermore, if $X \in \Gen_\mathcal{E}(E)$, then $g$ is an $\mathcal{E}$-admissible epimorphism.   
+\end{lemma}
+
+\begin{proof}
+    Assume that $X \in \Gen(E)$.
+Then there is a short exact sequence \[\begin{tikzcd}
+	0 & K & E  & X&  0
+	\arrow[from=1-1, to=1-2]
+	\arrow[ tail,from=1-2, to=1-3]
+	\arrow["g",two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] By applying the $\Hom(D,-)$ functor on this short exact sequence, we obtain the following long exact sequence
+\[\begin{tikzcd}
+	0 & \Hom(D,K) & \Hom(D,E)  & \Hom(D,X) & \\
+     & \Ext^1(D,K) & \Ext^1(D,E) & \Ext^1(D,X) & 0,
+	\arrow[tail, from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=2-2]
+    \arrow[from=2-2, to=2-3]
+    \arrow[two heads,"g_{\bullet}",from=2-3, to=2-4]
+    \arrow[from=2-4, to=2-5]
+\end{tikzcd} \] where $g_\bullet = \Ext^1(D,g)$. As $\mathscr{A}$ is hereditary, we have that $\Ext^2(D,K)=0$. So $g_\bullet$ is an epimorphism, and therefore, for any short exact sequence $\xi \in \Ext^1(D,X)$, there exists $\eta  \in \Ext^1(D,E)$ such that $g_\bullet(\eta) = \xi$. Since $g_\bullet$ is the pushout along $g$, we proved the assertion $(a)$. 
+
+By hypothesis, $\Ext^1(D,E) \subseteq \mathcal{E}$. So we have $\Ext^1(D,X) \subseteq \mathcal{E}$ as $\mathcal{E}$ is an exact structure. If moreover $X \in \Gen_\mathcal{E}(E)$, then it is clear that $g$ is an $\mathcal{E}$-admissible epimorphism. 
+\end{proof}
+
+\begin{lemma}
+\label{lemma:gendiagram}
+Let $\mathscr{C} \subseteq \mathscr{A}$ be a full subcategory. Let $E,F \in \mathscr{C}$ such that $\Ext^1(E,F) \subseteq \mathcal{E}$. Then, for any object $X$ in $\Gen_\mathcal{E}(E)$, we have $\Ext^1(X,F) \subseteq \mathcal{E}$.  
+\end{lemma}
+
+\begin{proof}
+ Suppose we have the following short exact sequence
+ \[\begin{tikzcd}
+	\xi: & 0 & F & E' & X&  0.
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\] Since $X \in \Gen_\mathcal{E}(E)$,
+there is a short exact sequence \[\begin{tikzcd}
+	0 & K & E  & X&  0 & \in \mathcal{E}.
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,"\varphi",from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] We can construct the following diagram.
+\[\begin{tikzcd}
+         & & & 0 &  \\
+	0 & F & E'  & X &  0 \\
+      & & & E & \\
+      & & & K & \\
+       & & & 0 & 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+        \arrow[from=5-4, to=4-4]
+	\arrow[tail, from=4-4, to=3-4]
+	\arrow[two heads,"\varphi",from=3-4, to=2-4]
+	\arrow[from=2-4, to=1-4]
+\end{tikzcd} \]
+We complete the diagram by taking the pullback along $\varphi$ and by using the kernel lifting property. 
+\[\begin{tikzcd}
+         & 0 & 0 & 0 &  \\
+	0 & F & E'  & X &  0 \\
+     0 & F & PB & E & 0 \\
+      0 & 0 & K' & K & 0 \\
+       & 0 & 0 & 0 & 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+        \arrow[from=3-1, to=3-2]
+	\arrow[tail, from=3-2, to=3-3]
+	\arrow[two heads,"\psi",from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+        \arrow[from=4-1, to=4-2]
+	\arrow[tail, from=4-2, to=4-3]
+	\arrow[two heads,from=4-3, to=4-4]
+	\arrow[from=4-4, to=4-5]
+        \arrow[from=5-2, to=4-2]
+	\arrow[tail, from=4-2, to=3-2]
+	\arrow[equals,from=3-2, to=2-2]
+	\arrow[from=2-2, to=1-2]
+        \arrow[from=5-3, to=4-3]
+	\arrow[tail, from=4-3, to=3-3]
+	\arrow[two heads,from=3-3, to=2-3]
+	\arrow[from=2-3, to=1-3]
+        \arrow[from=5-4, to=4-4]
+	\arrow[tail, from=4-4, to=3-4]
+	\arrow[two heads,"\varphi",from=3-4, to=2-4]
+	\arrow[from=2-4, to=1-4]
+\end{tikzcd} \]
+
+As the short sequences given by the three columns and those given by the two first rows of the above diagram are exact, by \cref{lem:3x3}, the short sequence given by the last row is exact too. So $K' \cong K$. 
+
+Moreover, the short exact sequence given by the middle row in $\mathcal{E}$ by hypothesis. As $\mathcal{E}$ is an exact structure, the short exact sequence given by the middle column is in $\mathcal{E}$. By \cref{lem:GenlocalEadapt}, we have that $\psi$ is an $\mathcal{E}$-admissible epimorphism. So by construction, the short exact sequence given by the middle row is also in $\mathcal{E}$. As the short exact sequence given by the first column, and the one given by the last row are split, they are in $\mathcal{E}$.
+
+By \cref{lem:3x3}, we have that $\xi \in {\mathcal{E}}$. 
+\end{proof}
+
+\begin{lemma}
+\label{lem:SublocalEadapt}
+Consider a full subcategory $\mathscr{C} \subseteq \mathscr{A}$. Let $E,F \in \mathscr{C}$ such that $\Ext^1(E,F) \subseteq \mathcal{E}$. Then, for any $X \in \Gen(E)$, the following assertions hold:
+\begin{enumerate}[label=$(\alph*)$,itemsep=1mm]
+   \item Any $\xi \in \Ext^1(X,F)$ is obtained by a pushout of some $\eta \in \Ext^1(E,F)$ along a monomorphism $ \begin{tikzcd}
+	 f: F & X;
+	\arrow[tail,from=1-1, to=1-2]
+   \end{tikzcd}$ and,
+   \item $\Ext^1(X,F) \subseteq \mathcal{E}$.
+\end{enumerate}
+Furthermore, if $X \in \Sub_\mathcal{E}(E)$, then $f$ is an $\mathcal{E}$-admissible monomorphism.   
+\end{lemma}
+
+
+\begin{proof}
+Let $X\in \Sub(E)$. Then, there is a short exact sequence \[\begin{tikzcd}
+	0 & X & E  & C&  0.
+	\arrow[from=1-1, to=1-2]
+	\arrow["f",tail, from=1-2, to=1-3]
+	\arrow[two heads, from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \]
+We obtain the following long exact sequence by applying the $\Hom(-,F)$ functor on this short exact sequence.
+\[\begin{tikzcd}
+	0 & \Hom(C,F) & \Hom(E,F)  & \Hom(X,F) & \\
+     & \Ext^1(C,F) & \Ext^1(E,F) & \Ext^1(X,F) & 0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=2-2]
+    \arrow[from=2-2, to=2-3]
+    \arrow["\scriptscriptstyle{f^{\bullet}}",from=2-3, to=2-4]
+    \arrow[from=2-4, to=2-5]
+\end{tikzcd} \] 
+where $f^{\bullet} = \Ext^1(f,F)$. As $\mathscr{A}$ is hereditary, we have $\Ext^2(C,F)=0$. So $g^{\bullet}$ is subjective: for any short exact sequence $\xi \in \Ext^1(X,F)$, there exists $\eta  \in Ext^1(E,F)$ such that $f^{\bullet}(\eta) = \xi$. Since $f^{\bullet}$ is the pullback along $f$, it means that every short exact sequence in $\Ext^1(X,F)$ is obtained by a pullback of a short exact sequence in $\Ext^1(E,F)$. 
+
+By hypothesis, $\Ext^1(E,F) \subseteq \mathcal{E}$. So we have $\Ext^1(X,F) \subseteq \mathcal{E}$ as $\mathcal{E}$ is an exact structure. If moreover $X \in \Sub_\mathcal{E}(E)$, then $f$ is an $\mathcal{E}$-admissible monomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma:subdiagram}
+Let $\mathscr{C} \subseteq \mathscr{A}$ be a full subcategory. Let $D,E$ be in $\mathscr{C}$ such that $\Ext^1(D,E) \subseteq \mathcal{E}$. Then, for any object $X$ in $\Sub_\mathcal{E}(E)$, we have $\Ext^1(D,X) \subseteq \mathcal{E}$.
+\end{lemma}
+
+\begin{proof}
+we have the following short exact sequence
+ \[\begin{tikzcd}
+	\varsigma: & 0 & X & E'' & D&  0.
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\] Since $X \in \Sub_\mathcal{E}(E)$,
+there is a short exact sequence \[\begin{tikzcd}
+	0 & X & E  & C &  0& \in \mathcal{E}.
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail,"\psi", from=1-2, to=1-3]
+	\arrow[,two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \]
+We can construct the following diagram.
+\[\begin{tikzcd}
+         & 0 & & &  \\
+	0 & X & E''  & D &  0 \\
+      & E & &  & \\
+      & C & & & \\
+       & 0 & & & 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+        \arrow[from=4-2, to=5-2]
+	\arrow[two heads, from=3-2, to=4-2]
+	\arrow[tail,"\psi",from=2-2, to=3-2]
+	\arrow[from=1-2, to=2-2]
+\end{tikzcd} \]
+We complete the diagram by taking the pushout along $\psi$ and by using the cokernel lifting property. 
+\[\begin{tikzcd}
+         & 0 & 0 & 0 &  \\
+	0 & X & E''  & F &  0 \\
+     0 & E & PO & F & 0 \\
+      0 & C & C'' & 0 & 0 \\
+       & 0 & 0 & 0 & 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+        \arrow[from=3-1, to=3-2]
+	\arrow[tail,"\varphi", from=3-2, to=3-3]
+	\arrow[two heads,from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+        \arrow[from=4-1, to=4-2]
+	\arrow[tail, from=4-2, to=4-3]
+	\arrow[two heads,from=4-3, to=4-4]
+	\arrow[from=4-4, to=4-5]
+        \arrow[from=4-2, to=5-2]
+	\arrow[two heads, from=3-2, to=4-2]
+	\arrow[tail,"\psi",from=2-2, to=3-2]
+	\arrow[from=1-2, to=2-2]
+        \arrow[from=4-3, to=5-3]
+	\arrow[two heads, from=3-3, to=4-3]
+	\arrow[tail,from=2-3, to=3-3]
+	\arrow[from=1-3, to=2-3]
+        \arrow[from=4-4, to=5-4]
+	\arrow[two heads, from=3-4, to=4-4]
+	\arrow[equals,from=2-4, to=3-4]
+	\arrow[from=1-4, to=2-4]
+\end{tikzcd} \]
+
+As the short sequences given by the three columns and those given by the two first rows of the above diagram are exact, by \cref{lem:3x3}, the short sequence given by the last row is exact too. So $C'' \cong C$. 
+
+Moreover, the short exact sequence given by the middle row in $\mathcal{E}$ by hypothesis. As $\mathcal{E}$ is an exact structure, the short exact sequence given by the middle column is in $\mathcal{E}$. By \cref{lem:SublocalEadapt}, we have that $\varphi$ is an $\mathcal{E}$-admissible monomorphism. So by construction, the short exact sequence given by the middle row is also in $\mathcal{E}$. As the short exact sequence given by the first column, and the one given by the last row are split, they are in $\mathcal{E}$.
+
+By \cref{lem:3x3}, we have that $\varsigma \in {\mathcal{E}}$. 
+\end{proof}
+
+\begin{prop}
+\label{prop:Estableinduction}
+Consider $(\mathscr{A}, \mathcal{E})$ be an exact category, and let $\mathscr{C} \subseteq \mathscr{A}$ be a full subcategory. If $\mathscr{C}$ is $ {\mathcal{E}}$-adapted, then $\Ext^1\left(\mathscr{C}, \GS^1_{\mathcal{E}}(\mathscr{C})\right)$ and $\Ext^1 \left(\GS^1_{\mathcal{E}}(\mathscr{C}), \mathscr{C} \right)$ are contained in ${\mathcal{E}}$.
+\end{prop}
+
+\begin{proof}
+Consider $X$ an object of $\GS^1_{\mathcal{E}}(\mathscr{C})$. Then $X$ is in $\Gen_{\mathcal{E}}(\mathscr{C})$ or in $\Sub_{\mathcal{E}}(\mathscr{C})$.
+
+Assume that $X \in \Gen_{\mathcal{E}}(\mathscr{C})$. We can then suppose that $X \in \Gen_{\mathcal{E}}(E) \subseteq \Gen(E)$ for $E \in \mathscr{C}$. By hypothesis, we know that for any $D,F\in \mathscr{C}$, then $\Ext^1(D,E),\Ext^1(E,F) \subseteq \mathcal{E}$. By \cref{lem:GenlocalEadapt}, $\Ext^1(D,X) \subseteq \mathcal{E}$ for any $D \in \GS^{1}_{\mathcal{E}}(M)$. By \cref{lemma:gendiagram}, $\Ext^1(X,F) \subseteq \mathcal{E}$ for any $F \in \mathscr{C}$.
+
+Assume that $X \in \Sub_{\mathcal{E}}(\mathscr{C})$. Similarly, we have that $X \in \Sub_{\mathcal{E}}(E) \subseteq \Sub(E)$ for some $E \in \mathscr{C}$. By hypothesis, we know that for any $D,F \in \mathscr{C}$, then $\Ext^1(D,E),\Ext^1(E,F) \subseteq \mathcal{E}$. By \cref{lem:SublocalEadapt}, $\Ext^1(X,F) \subseteq \mathcal{E}$ for any $F \in \mathscr{C}$. By \cref{lemma:subdiagram}, $\Ext^1(D,X) \subseteq \mathcal{E}$ for any $D \in \mathscr{C}$.
+
+Therefore, we get to the conclusion that, for any $X\in \GS^1_{\mathcal{E}}(\mathscr{C})$ and $E' \in \mathscr{C}$, we have $\Ext^1(X,E'),\Ext^1(E',X)\subseteq \mathcal{E}$.
+\end{proof}
+
+So we can finally prove and state the fact the $\GS_\mathcal{E}$-operator preserves $\mathcal{E}$-adaptibility.
+
+\begin{prop}
+\label{prop:EAdapt}
+Let $\mathscr{C} \subseteq \mathscr{A}$ be a full subcategory. If $\mathscr{C}$ is $\mathcal{E}$-adapted, then $\GS_{\mathcal{E}}(\mathscr{C})$ is $\mathcal{E}$-adapted too.
+\end{prop}
+
+\begin{proof}
+We prove by induction that $\GS^{i}_{\mathcal{E}}(\mathscr{C})$ is ${\mathcal{E}}$-adpated, for all $i \geq 0$. For $i=0$, the statement holds as $\mathcal{C}$ is $\mathcal{E}$-adapted.
+
+Fix $k \geqslant 0$. Assume that  $\GS^{k}_{\mathcal{E}}(\mathscr{C})$ is ${\mathcal{E}}$-adapted. Suppose that $X,Y \in \GS^{k+1}_{\mathcal{E}}(\mathscr{C})$. Then $X \in \Gen_{\mathcal{E}}(\GS^{k}_{\mathcal{E}}(\mathscr{C}))$ or $X \in \Sub_{\mathcal{E}}(\GS^{k}_{\mathcal{E}}(\mathscr{C}))$.
+
+If $X \in \Gen_{\mathcal{E}}(\GS^{k}_{\mathcal{E}}(\mathscr{C}))$. So $X \in \Gen_{\mathcal{E}}(E) \subseteq \Gen(E)$ for some $E \in \GS^{k}_{\mathcal{E}}(\mathscr{C})$. By induction hypothesis and \cref{prop:Estableinduction}, we get that $\Ext^1(Y,E),\Ext^1(E,Y) \subseteq \mathcal{E}$. Therefore, by \cref{lem:GenlocalEadapt}, $\Ext^1(Y,X) \subseteq \mathcal{E}$. Using \cref{lemma:gendiagram}, we also have $\Ext^1(X,Y) \subseteq \mathcal{E}$.
+
+If $X \in \Sub_{\mathcal{E}}(\GS^{k}_{\mathcal{E}}(\mathscr{C}))$. Let $E \in \GS^{k}_{\mathcal{E}}(\mathscr{C})$ such that $X \in \Sub_{\mathcal{E}}(E) \subseteq \Sub(E)$. Once again, by induction hypothesis and \cref{prop:Estableinduction}, we get that $\Ext^1(Y,E),\Ext^1(E,Y) \subseteq \mathcal{E}$. Therefore, by \cref{lemma:subdiagram}, we also have $\Ext^1(Y,X) \subseteq \mathcal{E}$.
+
+In either case, we prove that $\Ext^1(Y,X) \subseteq \mathcal{E}$. So $\GS^{k+1}_{\mathcal{E}}(\mathscr{C})$ is $\mathcal{E}$-adapted. We get the desired result on $\GS^{i}_{\mathcal{E}}(\mathscr{C})$ for all $i \geq 0$. So, $\GS_{\mathcal{E}}(\mathscr{C})$ is  $\mathcal{E}$-adapted.
+\end{proof}
+
+\subsection{Tilting objects in hereditary subcategories}
+\label{ss:Tilting} In this section, we highlight some interesting properties of the $\GS_\mathcal{E}$-operator with tilting objects in $\mathscr{A}$. Recall that we assume that $\mathscr{A}$ is still assumed hereditary (\cref{conv:hereditary}).
+
+\begin{definition}
+\label{def:rigidtilting}
+An object $T \in \mathscr{A}$ is said to be \new{rigid} whenever $\Ext_\mathscr{A}^1(T,T) = 0$. Such a rigid object $T$ is said to be \new{tilting} if the number of indecomposable summands of $T$ is ... \benj{\`{A} compléter. Pas de définition général ?}
+\end{definition}
+
+\begin{lemma} \label{lem:TiltEadapt}
+    For any rigid object $T \in \mathscr{A}$, the category $\add(T)$ is $\mathcal{E}$-adapted.
+\end{lemma}
+
+
+Thanks to what we proved previously, we have the following result.
+
+\begin{cor} \label{cor:rigidEadapt}
+    If $T \in \mathscr{A}$ is rigid, then $\GS_{\mathcal{E}}(T)$ is $\mathcal{E}$-adapted.
+\end{cor}
+
+\begin{proof}
+     It follows from \cref{prop:EAdapt} and \cref{lem:TiltEadapt}.
+\end{proof}
+
+In the following, we will show that $\GS_\mathcal{E}(T)$ is a $\mathcal{E}$-torsion and a $\mathcal{E}$-cotorsion class whenever $T \in \mathscr{A}$ is a tilting object. To do so, we must prove the following lemma.
+
+\begin{lemma}
+\label{lemmaExtclosedinduction}
+Let $T \in \mathscr{A}$ a rigid object. If there is a short exact sequence 
+\[\begin{tikzcd}
+	0 & X & E  & U &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $X \in \GS_{\mathcal{E}}(T)$ and $U \in \add(T)$, then $E \in \GS_{\mathcal{E}}(T)$.
+\end{lemma}
+
+\begin{proof}
+It is enough to show that, for any $n \in \mathbb{N}$, if we have a short exact sequence \[\begin{tikzcd}
+	    0 & X & E  & U &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $X\in \GS^n_{\mathcal{E}}(T)$ and $U \in \add(T)$, then $E \in  \GS_{\mathcal{E}}(T)$. We proceed to an induction proof on $n \in \mathbb{N}$. 
+
+If $n=0$, then $X \in \GS^0_{\mathcal{E}}(T) = \add(T)$. As $T$ is rigid, the result follows. Fix $n \in \mathbb{N}$. Assume that if there is a short exact sequence \[\begin{tikzcd}
+	0 & X & E  & U &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $X \in \GS^{n}_{\mathcal{E}}(T)$ and $U \in \add(T)$, then $E \in \GS_{\mathcal{E}}(T)$.
+
+Consider a short exact sequence \[\begin{tikzcd}
+	0 & Y & E'  & U' &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $Y \in \GS^{n+1}_{\mathcal{E}}(T)$ and $U' \in \add(T)$. Then either $Y \in \Sub_\mathcal{E}(\GS^{n}_{\mathcal{E}}(T))$ or $Y \in \Gen_\mathcal{E}(\GS^{n}_{\mathcal{E}}(T)).$
+
+Suppose $Y \in \Gen_\mathcal{E}(GS^{n}_{\mathcal{E}}(T))$. Let $F \in \GS^{n}_{\mathcal{E}}(T)$ such that $Y \in \Gen_{\mathcal{E}}(F) \subseteq \Gen(F)$. By \cref{prop:EAdapt}, we have that $\Ext^1(U,F) \subseteq \mathcal{E}$. Using \cref{lem:GenlocalEadapt}, we have:
+\begin{enumerate}[label=$\bullet$, itemsep=1mm]
+    \item any $\xi \in \Ext^1(U',Y)$ is obtained by a pushout of some $\eta \in \Ext^1(U',F)$ along an $\mathcal{E}$-admissible epimorphism $\begin{tikzcd}
+	 g: F & Y.;
+	\arrow[two heads,from=1-1, to=1-2]
+   \end{tikzcd}$ and,
+   \item $\Ext^1(U',Y) \subseteq \mathcal{E}$.
+\end{enumerate}
+We obtain the following commutative diagram.
+\[\begin{tikzcd}
+         & 0 & 0 & 0 &  \\
+	0 & K' & K''  & 0 &  0 \\
+     0 & F & E'' & U' & 0 \\
+      0 & Y & PO & U' & 0 \\
+       & 0 & 0 & 0 & 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+        \arrow[from=3-1, to=3-2]
+	\arrow[tail, from=3-2, to=3-3]
+	\arrow[two heads,from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+        \arrow[from=4-1, to=4-2]
+	\arrow[tail, from=4-2, to=4-3]
+	\arrow[two heads,from=4-3, to=4-4]
+	\arrow[from=4-4, to=4-5]
+        \arrow[from=4-2, to=5-2]
+	\arrow[two heads, from=3-2, to=4-2]
+	\arrow[tail,from=2-2, to=3-2]
+	\arrow[from=1-2, to=2-2]
+        \arrow[from=4-3, to=5-3]
+	\arrow[two heads, from=3-3, to=4-3]
+	\arrow[tail,from=2-3, to=3-3]
+	\arrow[from=1-3, to=2-3]
+        \arrow[from=4-4, to=5-4]
+	\arrow[equals, from=3-4, to=4-4]
+	\arrow[tail,from=2-4, to=3-4]
+	\arrow[from=1-4, to=2-4]
+\end{tikzcd} \]
+
+The short sequences given by the three columns and those given by the two last rows are exact. By \cref{lem:3x3}, the short sequence given by the first row is exact, too. Therefore $K' \cong K''$.
+
+As $F \in \GS^{n}_{\mathcal{E}}(T)$, we have that $E'' \in \GS_{\mathcal{E}}(T)$ by induction hypothesis. So, in the diagram above, the short sequences given by the three rows, and those given by the first and third columns are $\mathcal{E}$-exact. By \cref{lem:3x3}, the short sequence given by the middle column is $\mathcal{E}$-exact. Thus $PO \in \Gen_\mathcal{E}(E'') \subseteq \GS_{\mathcal{E}}(T)$.
+
+As every short exact sequence in $\Ext^1(U',Y)$ is obtained by a pushout of a short exact sequence in $\Ext^1(U',F)$, we get that $F \in \GS_{\mathcal{E}}(T)$.
+
+Assume that  $X \in \Sub_\mathcal{E}(\GS^{n}_{\mathcal{E}}(T))$. There exists a short exact sequence \[\begin{tikzcd}
+	0 & Y & F  & C&  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $F \in \GS^{n}_{\mathcal{E}}(T)$. We obtain the following pushout diagram:
+
+\[\begin{tikzcd}
+         & 0 & 0 & 0 &  \\
+	0 & C' & C''  & 0 &  0 \\
+     0 & F & PO & U' & 0 \\
+      0 & Y & E' & U' & 0 \\
+       & 0 & 0 & 0 & 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+        \arrow[from=3-1, to=3-2]
+	\arrow[tail, from=3-2, to=3-3]
+	\arrow[two heads,from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+        \arrow[from=4-1, to=4-2]
+	\arrow[tail, from=4-2, to=4-3]
+	\arrow[two heads,from=4-3, to=4-4]
+	\arrow[from=4-4, to=4-5]
+        \arrow[from=5-2, to=4-2]
+	\arrow[tail, from=4-2, to=3-2]
+	\arrow[two heads,from=3-2, to=2-2]
+	\arrow[from=2-2, to=1-2]
+        \arrow[from=5-3, to=4-3]
+	\arrow[tail, from=4-3, to=3-3]
+	\arrow[two heads,from=3-3, to=2-3]
+	\arrow[from=2-3, to=1-3]
+        \arrow[from=5-4, to=4-4]
+	\arrow[equals, from=4-4, to=3-4]
+	\arrow[two heads,from=3-4, to=2-4]
+	\arrow[from=2-4, to=1-4]
+\end{tikzcd} \]
+
+The short sequences given by the three columns and those given by the two last rows are exact. By \cref{lem:3x3}, the short sequence given by the first row is exact, too. So $C' \cong C''$.
+
+As $F,Y,T \in \GS_{\mathcal{E}}(T)$, the two last rows are in $\mathcal{E}$ by \cref{prop:EAdapt}. Moreover we know that $F \in \GS^{n}_{\mathcal{E}}(T)$, which implies that $PO \in \GS_{\mathcal{E}}(T)$ by induction hypothesis.
+
+The short sequences given by the three rows, and those given by the first and third columns are $\mathcal{E}$-exact. By \cref{lem:3x3}, the short sequence given by the middle column is also $\mathcal{E}$-exact. Then, $F \in \Sub_\mathcal{E}(PO) \subseteq \GS_{\mathcal{E}}(T)$. 
+
+In either case, we get $F \in \GS_\mathcal{E}(T)$. This completes the proof by induction.
+\end{proof}
+
+\begin{prop}
+\label{prop:Extclosed}
+Let $T \in \mathscr{A}$ be a tilting object. Then $\GS_{\mathcal{E}}(T)$ is an ${\mathcal{E}}$-torsion class and an ${\mathcal{E}}$-cotorsion class.
+\end{prop}
+
+\begin{proof}
+First, by definition, $\GS_{\mathcal{E}}(T)$ is closed on ${\mathcal{E}}$-subobjects and ${\mathcal{E}}$-quotients. We still must show that $\GS_{\mathcal{E}}(T)$ is also extension closed. To do so, let us prove by induction that, for any $n \in \mathbb{N}$, if we have a short exact sequence
+\[\begin{tikzcd}
+	0 & X & E  & Y &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with  $X\in \GS_{\mathcal{E}}(T)$ and $Y\in \GS^n_{\mathcal{E}} (T)$, then $E \in  \GS_{\mathcal{E}}(T)$. The $n=0$ case follows by \cref{lemmaExtclosedinduction}.
+
+Fix $n \in \mathbb{N}$. Assume that if we have the short exact sequence 
+\[\begin{tikzcd}
+	0 & U & E' & V &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \]
+with $U \in \GS_{\mathcal{E}}(T)$ and $V \in \GS^{n}_{\mathcal{E}}(T)$, then $E' \in \GS_{\mathcal{E}}(T)$. Consider a short exact sequence \[\begin{tikzcd}
+	0 & X & E  & Y &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $X \in \GS_\mathcal{E}(T)$ and $Y \in \GS_\mathcal{E}^{n+1}(T)$. Like previously, we must treat two cases.
+
+Suppose $Y \in \Sub_\mathcal{E}(F)$ for some $F \in \GS^{n}_{\mathcal{E}}(T)$. By \cref{prop:EAdapt}, we have that $\Ext^1(F,X) \subseteq \mathcal{E}$. By \cref{lem:SublocalEadapt}, we have:
+\begin{enumerate}[label=$\bullet$, itemsep=1mm]
+    \item any $\xi \in \Ext^1(Y,X)$ is obtained by a pushout of some $\eta \in \Ext^1(F,X)$ along an $\mathcal{E}$-admissible monomorphism $\begin{tikzcd}
+	 f: F & X;
+	\arrow[tail,from=1-1, to=1-2]
+   \end{tikzcd}$ and,
+    \item $\Ext^1(Y,X) \subseteq \mathcal{E}$.
+\end{enumerate}
+We obtain the following commutative diagram.
+\[\begin{tikzcd}
+         & 0 & 0 & 0 &  \\
+	0 & 0 & C''  & C' &  0 \\
+     0 & X & E'' & F & 0 \\
+      0 & X & PB & Y & 0 \\
+       & 0 & 0 & 0 & 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+        \arrow[from=3-1, to=3-2]
+	\arrow[tail, from=3-2, to=3-3]
+	\arrow[two heads,from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+        \arrow[from=4-1, to=4-2]
+	\arrow[tail, from=4-2, to=4-3]
+	\arrow[two heads,from=4-3, to=4-4]
+	\arrow[from=4-4, to=4-5]
+        \arrow[from=5-2, to=4-2]
+	\arrow[equals, from=4-2, to=3-2]
+	\arrow[two heads,from=3-2, to=2-2]
+	\arrow[from=2-2, to=1-2]
+        \arrow[from=5-3, to=4-3]
+	\arrow[tail, from=4-3, to=3-3]
+	\arrow[two heads,from=3-3, to=2-3]
+	\arrow[from=2-3, to=1-3]
+        \arrow[from=5-4, to=4-4]
+	\arrow[tail, from=4-4, to=3-4]
+	\arrow[two heads,from=3-4, to=2-4]
+	\arrow[from=2-4, to=1-4]
+\end{tikzcd} \]
+
+The short sequences given by the three columns, and those given by the two last rows are exact. By \cref{lem:3x3}, the short sequence given by the first row is exact, too. Then $C'' \cong C$. Moreover, as $F \in \GS^{n}_{\mathcal{E}}(T)$, we have that $E'' \in \GS_{\mathcal{E}}(T)$ by induction hypothesis.
+
+The short exact sequences given by the three rows, and those given by the first and third columns are in ${\mathcal{E}}$. By \cref{lem:3x3}, the short sequence given by the middle column is also $\mathcal{E}$-exact. So $PB \in \Sub_\mathcal{E}(E'') \subseteq \GS_{\mathcal{E}}(T)$. By the fact that every short exact sequence in $\Ext^1(Y,X)$ is obtained by a pullback of a short exact sequence in $\Ext^1(E',X)$, we get that $E \in \GS_{\mathcal{E}}(T)$.
+
+Now, assume that $Y \in \Gen_\mathcal{E}(F)$ for some $F \in \GS_\mathcal{E}^n(T)$. Therefore, there exists a short exact sequence \[\begin{tikzcd}
+	0 & K' & F  & Y &  0 & \in \mathcal{E}.
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] We obtain the following pullback diagram.
+\[\begin{tikzcd}
+         & 0 & 0 & 0 &  \\
+	0 & X & E  & Y &  0 \\
+     0 & X & PB & F & 0 \\
+      0 & 0 & K & K' & 0 \\
+       & 0 & 0 & 0 & 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+        \arrow[from=3-1, to=3-2]
+	\arrow[tail, from=3-2, to=3-3]
+	\arrow[two heads,from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+        \arrow[from=4-1, to=4-2]
+	\arrow[tail, from=4-2, to=4-3]
+	\arrow[two heads,from=4-3, to=4-4]
+	\arrow[from=4-4, to=4-5]
+        \arrow[from=5-2, to=4-2]
+	\arrow[tail, from=4-2, to=3-2]
+	\arrow[equals,from=3-2, to=2-2]
+	\arrow[from=2-2, to=1-2]
+        \arrow[from=5-3, to=4-3]
+	\arrow[tail, from=4-3, to=3-3]
+	\arrow[two heads,from=3-3, to=2-3]
+	\arrow[from=2-3, to=1-3]
+        \arrow[from=5-4, to=4-4]
+	\arrow[tail, from=4-4, to=3-4]
+	\arrow[two heads,from=3-4, to=2-4]
+	\arrow[from=2-4, to=1-4]
+\end{tikzcd} \]
+Once again, by \cref{lem:3x3}, the short sequence given by the last row is exact, and so $K \cong K'$. Futhermore, we have that $F,X,T \in \GS_{\mathcal{E}}(T)$. So the two first rows are in $\mathcal{E}$ by \cref{prop:EAdapt}. Moreover $F \in \GS^{n}_{\mathcal{E}}(T)$. So we have that $PB \in \GS_{\mathcal{E}}(T)$ by induction hypothesis. Using \cref{lem:3x3}, the short sequence given by the middle column is ${\mathcal{E}}$-exact. Therefore $E \in \Gen_\mathcal{E}(PB) \subseteq \GS_{\mathcal{E}}(T)$. 
+
+This completes the induction proof, and allows us to get that $\GS_\mathcal{E}(T)$ is extension closed. We get the desired result.
+\end{proof}
+
+\subsection{Reachability}
+\label{ss:reach}
+
+\begin{lemma}\label{propUniquetilting}
+Let $(\mathscr{A},\mathcal{E})$ be an exact subcategory with $\mathscr{A}$ hereditary and $T,T' \in \mathscr{A}$ two tilting objects. If $T' \in \GS_\mathcal{E}(T)$, then $\GS_\mathcal{E}(T') = \GS_\mathcal{E}(T)$. 
+\end{lemma}
+
+\begin{proof}
+We can assume that $T \ncong T'$. Since $T$ is tilting, by proposition \ref{prop:EAdapt}, there is a non split short exact sequence \[\begin{tikzcd}
+	0 & T' & E  & T &  0 & \in \mathcal{E},
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] or a non split short exact sequence \[\begin{tikzcd}
+	0 & T & E  & T' &  0 & \in \mathcal{E}.
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \]  By \cref{prop:Extclosed}, we have that $\GS_\mathcal{E}(T)$ is closed under extensions. Then $E \in \GS_\mathcal{E}(T)$ which implies that $T' \in \Gen_\mathcal{E}(\GS_\mathcal{E}(T))$ or $T' \in \Sub_\mathcal{E}(\GS_\mathcal{E}(T))$. Given that, $T' \in \GS_\mathcal{E}(T)$ and then $\GS_\mathcal{E}(T') \subseteq \GS_\mathcal{E}(T)$. \benj{Je ne pense pas que ce soit une question de maximalité ici --- D'ailleurs la maximalité avait-elle était démontrée pour n'importe quelle structure exacte ? j'avais vu pour $\mathcal{E}_\diamond$, mais pas pour $\mathcal{E}$ tout court.} By \cref{thm:maximal}, we know that $\GS_\mathcal{E}(T'),\GS_\mathcal{E}(T)$ are both maximal, hence $\GS_\mathcal{E}(T') = \GS_\mathcal{E}(T)$.
+\end{proof}
+\ibenj{}
+
+We can now answer the first conjecture. 
+
+\begin{theorem}
+\label{th:tiltunique}
+Let $\mathscr{C} \subseteq (\mathscr{A},\mathcal{E})$ be full exact subcategory with $\mathscr{A}$ hereditary and $T,T',T'' \in \mathscr{A}$ three tilting objects where $T \ncong T'$. If $T'' \in \GS_\mathcal{E}(T)$ and $T'' \in \GS_\mathcal{E}(T')$, then $\GS_\mathcal{E}(T') = \GS_\mathcal{E}(T)$. 
+\end{theorem}
+
+\begin{proof}
+By \cref{propUniquetilting}, we have that $\GS_\mathcal{E}(T') = \GS_\mathcal{E}(T'') = \GS_\mathcal{E}(T)$. 
+\end{proof}
+
+Given the theorems \ref{th:mCJR=GS} and \ref{th:tiltunique} with $\mathcal{E} = \mathcal{E}_\diamond$, we conclude that we cannot have a tilting object that is in two non-equivalent maximal CJR subcategories.  
+
+\begin{definition}
+Let $\mathscr{C} \subseteq (\mathscr{A},\mathcal{E})$ be a full exact subcategory with $\mathscr{A}$ hereditary. Consider $X \in \mathscr{A}$. We define right and left minimal $(\mathscr{C},\mathcal{E})$-approximations of as follows:
+
+\begin{enumerate}
+    \item An admissible monomorphism 
+    \[\begin{tikzcd}
+	X & C,
+	\arrow["f",tail,from=1-1, to=1-2]
+	\end{tikzcd} \]
+is called a \textbf{left minimal $(\mathscr{C},\mathcal{E})$-approximation} of $X$ if it is a left minimal $\mathscr{C}$-approximation of $X$. 
+
+    \item An admissible epimorphism 
+    \[\begin{tikzcd}
+	C & X,
+	\arrow["g",two heads,from=1-1, to=1-2]
+	\end{tikzcd} \]
+is called a \textbf{right minimal $(\mathscr{C},\mathcal{E})$-approximation} of $X$ if it is a right minimal $\mathscr{C}$-approximation of $X$. 
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Let $(\mathscr{A},\mathcal{E})$ be an exact subcategory with $\mathscr{A}$ hereditary and $T = T' \oplus T''  \in \mathscr{A}$ a tilting object with $T''$ indecomposable. We define the $\mathcal{E}$-mutations ${\mu_{T''}}^\mathcal{E}$ of $T$ at $T''$ as follows: 
+
+\begin{enumerate}
+    \item If $f$ is a \textbf{left minimal $(\add(T'),\mathcal{E})$-approximation} of $T''$, then the \textbf{left $\mathcal{E}$-mutation} of $T$ at $T''$ is ${\mu_{T''}}^{-,\mathcal{E}}(T) = T' \oplus Coker(f)$. If there is no such $f$, then the left $\mathcal{E}$-mutation does not exist.
+    \item If $g$ is a \textbf{right minimal $(\add(T'),\mathcal{E})$-approximation} of $T''$, then the \textbf{right $\mathcal{E}$-mutation} of $T$ at $T''$ is ${\mu_{T''}}^{+,\mathcal{E}}(T) = T' \oplus Ker(f)$. If no such $g$ exists, then the right $\mathcal{E}$-mutation does not exist.
+\end{enumerate}
+
+\end{definition}
+
+\begin{definition}
+Let $(\mathscr{A},\mathcal{E})$ be an exact subcategory with $\mathscr{A}$ hereditary and $T,T' \in \mathscr{A}$ two tilting objects. We say that $T'$ is \textbf{$(T,\mathcal{E})$-reachable} if there is a finite sequence of $\mathcal{E}$-mutations such that $T$ mutates into $T'$.
+\end{definition}
+
+\begin{remark}
+The relation of $\mathcal{E}$-reachability on the class of tilting objects defines an equivalence relation.
+\end{remark}
+
+
+\begin{itemize}
+    \item \textbf{Reflexivity}: Trivially, any tilting object $T$ is \textbf{$(T,\mathcal{E})$-reachable}.
+    \item \textbf{Symmetry}: By the symmetry of left and right $\mathcal{E}$-mutations, if $T'$ is  \textbf{$(T,\mathcal{E})$-reachable}, then $T$ is  \textbf{$(T',\mathcal{E})$-reachable}.
+    \item \textbf{Transitivity}: If $T'$ is \textbf{$(T,\mathcal{E})$-reachable} and $T''$ is \textbf{$(T',\mathcal{E})$-reachable}, then concatenating the sequences of $\mathcal{E}$-mutations shows that $T''$ is \textbf{$(T,\mathcal{E})$-reachable}.
+\end{itemize}
+
+Thus, $\mathcal{E}$-reachability is an equivalence relation.
+
+
+\begin{definition}
+Let $(\mathscr{A},\mathcal{E})$ be an exact subcategory with $\mathscr{A}$ hereditary. We will refer to $\mathcal{T}_\mathcal{E}$ as an equivalence class $\mathcal{E}$-reachable tilting objects of $\mathscr{A}$.
+ 
+\end{definition}
+
+\begin{prop}
+\label{prop:Tstable}
+Let $(\mathscr{A},\mathcal{E})$ be an exact subcategory with $\mathscr{A}$ hereditary and $T,T' \in \mathscr{A}$ two tilting objects. If $T,T' \in \mathcal{T}_\mathcal{E}$, then $\GS_\mathcal{E}(T') = \GS_\mathcal{E}(T)$.
+\end{prop}
+
+\begin{proof}
+If $T'$ is \textbf{$(T,\mathcal{E})$-reachable}, there is finite sequence of $\mathcal{E}$-mutations such that $T$ mutates into $T'$. We will show that the proposition holds for any such finite sequence of $n$ $\mathcal{E}$-mutations for any $n \in \mathbb{N}.$ 
+
+(For $n=0$) We have that $T \cong T'$, so  $\GS_\mathcal{E}(T') = \GS_\mathcal{E}(T)$.
+
+Suppose the result holds for all sequences of $k$ $\mathcal{E}$-mutations for a specific $k \in \mathbb{N}$.
+
+If there is a sequence of $k+1$ $\mathcal{E}$-mutations such that $T$ mutates into $T'$, then there is a tilting object $X = X' \oplus T'' $ in $\mathscr{A}$ such that either ${\mu_{T''}}^{-,\mathcal{E}}(X) = T' \cong X' \oplus Cokerf$ or either ${\mu_{T''}}^{+,\mathcal{E}}(X) = T' \cong X' \oplus Ker(f)$ with $T''$ is an indecomposable direct summands of $X$. In addition, there is a finite sequence of $k$ $\mathcal{E}$-mutations such that $T$ mutates into $X$. By induction hypothesis, $\GS_\mathcal{E}(T) = \GS_\mathcal{E}(X)$. 
+
+\bigskip
+
+\textbf{1)} If ${\mu_{T''}}^{-,\mathcal{E}}(X) = T'$, we have the following $\mathcal{E}$-admissible short exact sequence: 
+
+\[\begin{tikzcd}
+	0 & T'' & E  & Coker(f)&  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $E \in \add(X')$. Given that, $Coker(f) \in \Gen_\mathcal{E}(\GS_\mathcal{E}(X)) \subseteq \GS_\mathcal{E}(X)$ and $T' \cong X' \oplus Coker(f) \in \GS_\mathcal{E}(X)$. By lemma \ref{propUniquetilting}, $\GS_\mathcal{E}(T') = \GS_\mathcal{E}(X) = \GS_\mathcal{E}(T)$.
+
+\bigskip
+
+\textbf{2)} If ${\mu_{T''}}^{+,\mathcal{E}}(X) = T'$, we have the following $\mathcal{E}$-admissible short exact sequence: 
+
+\[\begin{tikzcd}
+	0 & Ker(f) & E  & T'' &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $E \in \add(X')$. Given that, $Ker(f) \in \Sub_\mathcal{E}(\GS_\mathcal{E}(X)) \subseteq \GS_\mathcal{E}(X)$ and $T' \cong X' \oplus Ker(f) \in \GS_\mathcal{E}(X)$. By lemma \ref{propUniquetilting}, $\GS_\mathcal{E}(T') = \GS_\mathcal{E}(X) = \GS_\mathcal{E}(T)$.
+
+
+
+
+
+
+
+\end{proof}
+
+The previous proposition is allowing us to denote $\GS_\mathcal{E}(T)$ as $\GS_\mathcal{E}(\mathcal{T}_\mathcal{E})$ for any $T \in \mathcal{T}_\mathcal{E}$  without ambiguity.
+
+
+
+\begin{theorem}
+Let $(\mathscr{A},\mathcal{E})$ be an exact subcategory with $\mathscr{A}$ hereditary. A one-to-one correspondence exists between the collection of equivalence classes $\mathcal{T}_\mathcal{E_\diamond}$ and the collection of maximal CJR subcategories.
+\end{theorem}
+
+\begin{proof}
+Follows directly from theorems \ref{th:mCJR=GS} and \ref{th:tiltunique}.
+\end{proof}
+
+
+
+We can now answer the second conjecture.
+
+\begin{theorem}
+\label{th:Treaching}
+Let $(\mathscr{A},\mathcal{E})$ be an exact subcategory with $\mathscr{A}$ hereditary. Then $\GS_\mathcal{E}(\mathcal{T}_\mathcal{E}) = \add(\bigoplus\limits_{T \in \mathcal{T}_\mathcal{E}} T)$.
+\end{theorem}
+
+\begin{proof}
+First of all, $ \add(\bigoplus\limits_{T \in \mathcal{T}_\mathcal{E}} T) \subseteq  \GS_\mathcal{E}(\mathcal{T}_\mathcal{E})$ follows from the proposition \ref{prop:Tstable} since any $T' \in \mathcal{T}_\mathcal{E}$ is in $\GS_\mathcal{E}(\mathcal{T}_\mathcal{E})$ which is closed under direct sums.
+
+\bigskip
+
+Let's now prove that $\GS_\mathcal{E}(\mathcal{T}_\mathcal{E}) \subseteq \add(\bigoplus\limits_{T \in \mathcal{T}_\mathcal{E}} T)$
+
+We will proceed by showing that for any $n \in \mathbb{N}$, if $X \in \GS^n_\mathcal{E}(T)$ for some $T \in \mathcal{T}_\mathcal{E}$, then $X \in \add(T')$ for some tilting object $T' \in \mathcal{T}_\mathcal{E}$.
+
+\bigskip
+(For $n=0$) $X \in \GS^0_\mathcal{E}(T) = \add(T)$ with $T \in \mathcal{T}_\mathcal{E}$ .
+
+\bigskip
+Suppose that for any $k \leq n$ for a certain $n \in \mathbb{N}$, if $X \in \GS^k_\mathcal{E}(T)$ for some $T \in \mathcal{T}_\mathcal{E}$, then $X \in \add(T')$ for some tilting object $T' \in \mathcal{T}_\mathcal{E}$.
+
+
+\bigskip
+Consider $X \in \GS^{n+1}_\mathcal{E}(T)$. 
+
+\textbf{1)} If $X \in \Gen_\mathcal{E}(\GS^{n}_\mathcal{E}(T))$, then we have the following $\mathcal{E}$-admissible short exact sequence:
+
+\[\begin{tikzcd}
+	0 & K & E  & X &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $E \in \GS^{n}_\mathcal{E}(T)$. By induction hypothesis, then $E \in \add(T')$ for some tilting object $T' \in \mathcal{T}_\mathcal{E}$. Given that, $X \in \GS^{1}_\mathcal{E}(T')$ and, by induction hypothesis,  $X \in \add(T'')$ for some tilting object $T'' \in \mathcal{T}_\mathcal{E}$ 
+
+\bigskip
+
+\textbf{2)} If $X \in \Sub_\mathcal{E}(\GS^{n}_\mathcal{E}(T))$, then we have the following $\mathcal{E}$-admissible short exact sequence:
+
+\[\begin{tikzcd}
+	0 & X & E  & C &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] with $E \in \GS^{n}_\mathcal{E}(T)$. By induction hypothesis, then $E \in \add(T')$ for some tilting object $T' \in \mathcal{T}_\mathcal{E}$. Given that, $X \in \GS^{1}_\mathcal{E}(T')$ and, by induction hypothesis,  $X \in \add(T'')$ for some tilting object $T'' \in \mathcal{T}_\mathcal{E}$. 
+
+\end{proof}
+
+Given \cref{th:mCJR=GS,th:Treaching}, and \ref{prop:existtiltmaxCJR}, we conclude that any maximal CJR subcategory $\mathscr{C}$ is additively generated by indecomposable summands of tilting representations that can be obtained by a finite sequence of $\mathcal{E}_\diamond$-mutations from a tilting representation in $\mathscr{C}$. 

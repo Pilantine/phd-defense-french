@@ -1,0 +1,219 @@
+
+\begin{proof}
+Assume to the contrary that such a subcategory $\mathscr{C} \supsetneq \GS_{\mathcal{E}_\diamond}(T)$ exists. By \cref{conv:addsubcat}, there exists $V \in \ind(Q)$ such that $V \in \mathscr{C}$ and $V \notin \GS_{\mathcal{E}_\diamond}(T)$.
+
+As $\mathscr{C}$ is $\mathcal{E}_\diamond$-adpated, we have that $\Ext^1(\mathscr{C},V)$ and $\Ext^1(V,\mathscr{C})$ are contained in $\mathcal{E}_\diamond$. As $T$ is tilting, then there exist an indecomposable direct summand $T_0$ of $T$ such that there is a non-split short exact sequence \[\begin{tikzcd}
+	\xi_0: & 0 & T_0 & E_0 & V &  0 & \in \mathcal{E}_\diamond,
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\]  or \[\begin{tikzcd}
+	\varsigma_0: & 0 & V & E_0 & T_0 &  0 & \in \mathcal{E}_\diamond.
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\]
+
+Assume that we have $\xi_0 \in \mathcal{E}_\diamond$. By construction, we have that $\Gen_{\mathcal{E}_\diamond}(\GS_{\mathcal{E}_\diamond}(T)) \subseteq \GS_{\mathcal{E}_\diamond}(T)$. Therefore, there must be one of the indecomposable summands of $E_0$, let us call it $V_1$, that is not in $\GS_{\mathcal{E}_\diamond}(T)$. On the other hand, $\mathscr{C}$ is extension closed, and so $V_1 \in \mathscr{C}$. By the same arguments than those applied to $V$ previously, there exists an indecomposable direct summand $T_1$ of $T$ such that there is a non-split short exact sequence \[\begin{tikzcd}
+	\xi_1: & 0 & T_1 & E_1 & V_1 &  0 & \in \mathcal{E}_\diamond,
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\]  or \[\begin{tikzcd}
+	\xi_1': & 0 & V_1 & E_1 & T_1 &  0 & \in \mathcal{E}_\diamond.
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\] 
+Suppose we have $\xi_1' \in \mathcal{E}_\diamond$. As $\xi_0,\xi_1' \in \mathcal{E}_\diamond$, by composing their respective $\mathcal{E}_\diamond$-monomorphisms, we obtain the short exact sequence \[\begin{tikzcd}
+	\zeta_1: & 0 & T_0 & E_1 & C &  0 & \in \mathcal{E}_\diamond.
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\] We obtain the following commutative cokernel diagram:
+\[\begin{tikzcd}
+         & & & T_1 & \\
+	 0 & T_0 & E_1 & C &  0 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,"g_2",from=2-3, to=2-4]
+        \arrow[two heads,"g_1",from=2-3, to=1-4]
+        \arrow[two heads,dashed,"p",from=2-4, to=1-4]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}\] 
+Since $g_1 = p \circ g_2$ is an $ \mathcal{E}_\diamond$-epimorphism, it follows from \cref{lem:obscure} that $p$ is also an $\mathcal{E}_\diamond$-epimorphism. After taking the kernel of $p$, we obtain the following pullback diagram:
+\[\begin{tikzcd}
+         & 0 & 0 & 0 &  \\
+	0 & 0 & T_1  & T_1 &  0 \\
+     0 & T_0 & E_1 & C & 0 \\
+      0 & T_0 & PB & K & 0 \\
+       & 0 & 0 & 0 & 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[equals,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+        \arrow[from=3-1, to=3-2]
+	\arrow[tail, from=3-2, to=3-3]
+	\arrow[two heads,from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+        \arrow[from=4-1, to=4-2]
+	\arrow[tail, from=4-2, to=4-3]
+	\arrow[two heads,from=4-3, to=4-4]
+	\arrow[from=4-4, to=4-5]
+        \arrow[from=5-2, to=4-2]
+	\arrow[equals, from=4-2, to=3-2]
+	\arrow[two heads,from=3-2, to=2-2]
+	\arrow[from=2-2, to=1-2]
+        \arrow[from=5-3, to=4-3]
+	\arrow[tail, from=4-3, to=3-3]
+	\arrow[two heads,"f",from=3-3, to=2-3]
+	\arrow[from=2-3, to=1-3]
+        \arrow[from=5-4, to=4-4]
+	\arrow[tail, from=4-4, to=3-4]
+	\arrow[two heads,from=3-4, to=2-4]
+	\arrow[from=2-4, to=1-4]
+\end{tikzcd} \]
+So $PB \cong \Ker(f) = V_1$. Moreover, the middle row is ${\mathcal{E}_\diamond}$-exact. Therefore, by definition, the last row is ${\mathcal{E}_\diamond}$-exact. This yields a contradiction as $T_0$ and $PB$ are indecomposable. Thus $\xi_1 \in \mathcal{E}_\diamond$.
+
+By iterating the previous arguments, we get a sequence of indecomposable representations $(V_i)_{i \in \mathbb{N}}$ such that:
+\begin{enumerate}[label=$\bullet$, itemsep=1mm]
+    \item $V_0 = V$, and for all $i \in \{0,\ldots,m\}$,  $V_i \in \mathscr{C} \setminus \GS_{\mathcal{E}_\diamond}(T)$;
+    \item for all $i \in \mathbb{N}$, there exists a nonzero map $\begin{tikzcd}
+        f_i : V_{i+1} & V_i 
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}$; and
+    \item  for any $i \in \mathbb{N}$, there exist $T_i$ an indecomposable summand of $T$, and a nonsplit short exact sequence \[\begin{tikzcd}
+	 \xi_i : & 0 & T_i & E_i & V_i &  0 & \in \mathcal{E}_\diamond
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\]
+\end{enumerate}
+As $Q$ is an $A_n$ type quiver, the category $\rep(Q)$ is directing (\cref{thm:Andirecting}). Therefore, the sequence $(V_i)$ becomes stationary: an integer $m \in \mathbb{N}$ exists such that for all $i \geqslant m$, we have $V_m \cong V_i$. Consider $m$ to be the minimal index at which it occurs. Then $\mathcal{E}_\diamond(V_m,T) = \mathcal{E}_\diamond(T,V_m) = 0$.
+
+As $T$ is tilting, there exists a short exact sequence 
+\[\begin{tikzcd}
+	 0 & V_m & F & T &  0 
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\] or \[\begin{tikzcd}
+	 0 & T & F & V_m &  0 
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\] outside of $\mathcal{E}_\diamond$.
+
+That yields a contradiction with the fact that $\mathscr{C}$ only admits short exact sequences in $\mathcal{E}_\diamond$.
+
+Suppose we have $\varsigma_0 \in \mathcal{E}_\diamond$. By the similar arguments than previously used from $\xi_0$, there exist an indecomposable representation $V_1 \in \mathscr{C} \setminus \GS_{\mathcal{E}_\diamond}(T)$, and an indecomposable direct summand $T_1$ of $T$ such that there is a nonsplit short exact sequence  \[\begin{tikzcd}
+	\varsigma_1': & 0 & T_1 & E_1 & V_1 &  0 & \in \mathcal{E}_\diamond,
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\]  or \[\begin{tikzcd}
+	\varsigma_1: & 0 & V_1 & E_1 & T_1 &  0 & \in \mathcal{E}_\diamond.
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\] 
+
+Suppose we have the short exact sequence $\varsigma_1' \in \mathcal{E}_\diamond$. Since $\varsigma_0, \varsigma_1' \in \mathcal{E}_\diamond$, by composing their admissible epimorphisms, we obtain the short exact sequence  \[\begin{tikzcd}
+	\zeta_1: & 0 & K & E_1 & T_0 &  0 & \in \mathcal{E}_\diamond.
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\]  We obtain the following commutative kernel diagram:
+\[\begin{tikzcd}
+	 0 & K & E_1 & K &  0 \\
+      & T_1 & & &
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail,"f_2", from=1-2, to=1-3] 
+        \arrow[tail,"f_1",from=2-2, to=1-3]
+        \arrow[tail,dashed,"i",from=2-2, to=1-2]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\] 
+Since $f_1 = f_2 \circ i$ is an $ \mathcal{E}_\diamond$-monomorphism, it follows from \cref{lem:obscure} that $i$ is also an $\mathcal{E}_\diamond$-monomorphism. After taking the cokernel of $i$, we obtain the following pushout diagram:
+\[\begin{tikzcd}
+         & 0 & 0 & 0 &  \\
+	0 & C & PO  & T_0 &  0 \\
+     0 & K & E_1 & T_0 & 0 \\
+      0 & T_1 & T_1 & 0 & 0 \\
+       & 0 & 0 & 0 & 
+	\arrow[from=2-1, to=2-2]
+	\arrow[tail, from=2-2, to=2-3]
+	\arrow[two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+        \arrow[from=3-1, to=3-2]
+	\arrow[tail, from=3-2, to=3-3]
+	\arrow[two heads,from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+        \arrow[from=4-1, to=4-2]
+	\arrow[equals, from=4-2, to=4-3]
+	\arrow[two heads,from=4-3, to=4-4]
+	\arrow[from=4-4, to=4-5]
+        \arrow[from=5-2, to=4-2]
+	\arrow[tail, from=4-2, to=3-2]
+	\arrow[two heads,from=3-2, to=2-2]
+	\arrow[from=2-2, to=1-2]
+        \arrow[from=5-3, to=4-3]
+	\arrow[tail,"g", from=4-3, to=3-3]
+	\arrow[two heads,from=3-3, to=2-3]
+	\arrow[from=2-3, to=1-3]
+        \arrow[from=5-4, to=4-4]
+	\arrow[tail, from=4-4, to=3-4]
+	\arrow[equals,from=3-4, to=2-4]
+	\arrow[from=2-4, to=1-4]
+\end{tikzcd} \]
+Therefore $PO \cong \Coker(g) = V_1 $. Moreover, the middle row is ${\mathcal{E}_\diamond}$-exact. So the first row is ${\mathcal{E}_\diamond}$-exact. This yields a contradiction as $T_0$ and $PO$ are indecomposable. Thus $\varsigma_1 \in \mathcal{E}_\diamond$.
+
+By iterating the previous arguments, we get a sequence of indecomposable representations $(V_i)_{i \in \mathbb{N}}$ such that:
+\begin{enumerate}[label=$\bullet$, itemsep=1mm]
+    \item $V_0 = V$, and for all $i \in \{0,\ldots,m\}$,  $V_i \in \mathscr{C} \setminus \GS_{\mathcal{E}_\diamond}(T)$;
+    \item for all $i \in \mathbb{N}$, there exists a nonzero map $\begin{tikzcd}
+        g_i : V_i & V_{i+1} 
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}$; and
+    \item  for any $i \in \mathbb{N}$, there exist $T_i$ an indecomposable summand of $T$, and a nonsplit short exact sequence \[\begin{tikzcd}
+	 \varsigma_i : & 0 & V_i & E_i & T_i &  0 & \in \mathcal{E}_\diamond
+	\arrow[from=1-2, to=1-3]
+	\arrow[tail, from=1-3, to=1-4]
+	\arrow[two heads,from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+\end{tikzcd}\]
+\end{enumerate}
+
+As $\rep(Q)$ is directing, the sequence $(V_i)$ becomes stationary. Consider $m$ the minimal index such that for all $i \geqslant m$, we have $V_m \cong V_i$. Then $\mathcal{E}_\diamond(V_m,T) = \mathcal{E}_\diamond(T,V_m) = 0$.
+
+As $T$ is tilting, there exists a short exact sequence 
+\[\begin{tikzcd}
+	 0 & V_m & F & T &  0 
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\] or \[\begin{tikzcd}
+	 0 & T & F & V_m &  0 
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\] outside of $\mathcal{E}_\diamond$.
+
+That yields a contradiction with the fact that $\mathscr{C}$ only admits short exact sequences in $\mathcal{E}_\diamond$.
+
+Thus, in either case, we got the desired result.
+\end{proof}
+

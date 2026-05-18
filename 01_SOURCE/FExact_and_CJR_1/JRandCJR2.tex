@@ -1,0 +1,205 @@
+\pagestyle{plain}
+
+Let $(Q,R)$ be a bounded quiver. In this section, we recall the notion of Jordan recoverability on subcategories of $\rep(Q,R)$, and a few results relative to this subject. We refer the reader to \cite{GPT19,D22,D23}. 
+
+\subsection{Jordan recoverability}
+\label{ss:JR}
+
+Let $E \in \rep(Q,R)$. A \new{nilpotent endomorphism} of $E$ is a morphism $N : E \longrightarrow E$  such that there exists a $k \in \mathbb{N}^*$ such that $N^k = 0$, or equivalently, for all $q \in Q_0$, the linear map $N_q$ is nilpotent. We denote the set of nilpotent endomorphisms of $E$ by $\NEnd(E)$. \cite{GPT19} shows that $\NEnd(E)$ is an irreducible algebraic variety.
+
+An \new{integer partition} is a finite weakly decreasing sequence $\lambda = (\lambda_1,\ldots,\lambda_k)$ of positive integers. We also consider, by convention, that $(0)$ is an integer partition called \emph{zero partition}. The \new{parts} of $\lambda$ are the values, counted with multiplicities, taken by $\lambda$. The \new{size} of $\lambda$, denoted by $|\lambda|$, is the sum of all its parts; meaning $|\lambda| = \lambda_1 + \ldots + \lambda_k$. More precisely, if $|\lambda| = m$ for some $m \in \mathbb{N}$, we say that $\lambda$ is an integer partition of $m$, and we write $\lambda \vdash m$. The \new{length} of $\lambda$, denoted by $\ell(\lambda)$, is the number of parts of $\lambda$; meaning $\ell(\lambda) = k$. Let $m \in \mathbb{N}$. We define the \new{dominance order} $\leqslant$ on integer partitions of $m$ as follows: for any $\lambda, \mu \vdash m$, we say that $\lambda \leqslant \mu$ whenever for all $1 \leqslant i \leqslant \min(\ell(\lambda), \ell(\mu))$, we have $\lambda_1 + \ldots + \lambda_i \leqslant \mu_1 + \ldots + \mu_i$. 
+
+Let $p \in \mathbb{N}^*$. We extend some notions to $p$-tuples of integer partitions, which are called \new{p-integer partitions}. Let $\pmb{\lambda} = (\lambda^1, \ldots, \lambda^p)$ be a $p$-integer partition. The \new{size vector} of $\pmb{\lambda}$ is $|\pmb{\lambda}| = (|\lambda^1|, \ldots, |\lambda^p|)$. Given $\pmb{d} = (d_1,\ldots,d_p) \in \mathbb{N}^p$, we say that $\pmb{\lambda}$ is a $p$-integer partition of $\pmb{d}$ whenever $|\pmb{\lambda}| = \pmb{d}$. In such case, we write $\pmb{\lambda} \pmb{\vdash} \pmb{d}$. We define the \emph{dominance order} on $p$-integer partitions of $\pmb{d}$ as follows: for any $\pmb{\lambda},\pmb{\mu} \pmb{\vdash} \pmb{d}$, we say that $\pmb{\lambda} \domleq \pmb{\mu}$ if, for all $j \in \{1,\ldots,p\}$, we have $\lambda^j \leqslant \mu^j$.
+
+Let $N \in \NEnd(E)$. For any $q \in Q_0$, we denote $\JF(N_q)$ the \emph{Jordan form} of the nilpotent linear map $N_q$, understood as an integer partition whose parts are the sizes of the Jordan blocks. So $\JF(N_q) \vdash d_q$ for any $q \in Q_0$. Write $\vJF(N)$ for the \new{Jordan form} of $N$, defined as the $\#Q_0$-integer partitions $(\JF(N_q))_{q \in Q_0}$. Note that $\vJF(N) \pmb{\vdash} \vdim(E)$.
+
+\begin{theorem}[\cite{GPT19}] \label{thm:GenJFexists} Let $(Q,R)$ be a bounded quiver, $\mathbb{K}$ be an algebraically closed field, and $E \in \rep(Q,R)$. Then  $\vJF$ admits a maximum value on $\NEnd(E)$, and it is attained in a dense open (for Zariski topology) subset of $\NEnd(E)$.
+\end{theorem}
+
+We define $\GenJF(E)$ as the maximal value of $\vJF$ on $\NEnd(E)$. We call it \new{generic Jordan form} of $E$. Note that $\GenJF$ defines an invariant on isomorphism classes of representations of $(Q,R)$. Still, it is not a complete invariant in general: that is, we can find $E,F \in \rep(Q,R)$ such that $E \ncong F$ and $\GenJF(E) = \GenJF(F)$. However, we can focus on the subcategories of $\rep(Q,R)$ such that $\GenJF$ is complete.
+
+\begin{definition} \label{def:JR}
+    Let $(Q,R)$ be a bounded quiver. A subcategory $\mathscr{C}$ or $\rep(Q,R)$ is said to be \new{Jordan recoverable} if, for any $\#Q_0$-integer partition $\pmb{\lambda}$, there exists at most one $E \in \rep(Q,R)$, up to isomorphism, such that $\GenJF(E) = \pmb{\lambda}$.
+\end{definition}
+
+To determine whether a subcategory of $\rep(Q,R)$ is Jordan recoverable, we are led to solve a system of tropical equations, which can be a challenging task. The following section introduces an algebraic way to build a representation from any $\#Q_0$-integer partition. Under some more restrictions, it allows one to return a representation of $(Q,R)$ from its generic Jordan form.
+
+\subsection{Canonical Jordan recoverability}
+\label{ss:CJR}
+
+Let $\pmb{\lambda}$ be a $\#Q_0$-integer partition, and set $|\pmb{\lambda}| = \pmb{d}$. Consider $N = \left(N_q : \mathbb{K}^{d_q} \longrightarrow \mathbb{K}^{d_q} \right)_{q \in Q_0}$ to be a $\#Q_0$-tuple of nilpotent linear maps such that $\JF(N_q) = \lambda^q$. We say that a representation $E$ is \new{compatible with} $N$ whenever there exists $N' \in \NEnd(E)$ such that, for all $q \in Q_0$, the linear maps $N'_q$ and $N_q$ are similar. We denote by $\rep((Q,R),N)$ the collection of representations compatible with $N$.
+
+In $\rep((Q,R),N)$, we ask whether there exists a dense open set (for Zariski topology) such that all its representations are isomorphic. In such a case, we define $\GenRep(N)$ as a representation in the corresponding dense open set. Note that $\GenRep(N)$ only depends on its Jordan form. Therefore, we define $\GenRep(\pmb{\lambda})$ the \new{generic representation} of $\pmb{\lambda}$ to be one of the $\GenRep(N)$ where $N$ is a collection of nilpotent linear maps compatible with a nilpotent endomorphism $N' \in \NEnd(E)$ such that $\JF(N') = \pmb{\lambda}$.
+
+\begin{definition} \label{def:CJR} A subcategory $\mathscr{C} \subseteq \rep(Q,R)$ is said to be \new{canonically Jordan recoverable} if, for any $X \in \mathscr{C}$, $\GenRep(\GenJF(X))$ is well-defined and is isomorphic to $X$.
+\end{definition}
+
+Note that, in general, given a $\#Q_0$-integer partition, it could happen that $\GenRep(\pmb{\lambda})$ cannot be defined. We refer to \cite[Examples 2.21 and 2.23]{D22} for examples in the case where $(Q,R)$ is a gentle quiver.
+
+The following result shows that, at least, under some restrictions, we can ensure that $\GenRep(\pmb{\lambda})$ is well-defined for any $\#Q_0$-integer partition.
+
+\begin{prop}[\cite{GPT19,D23}] \label{prop:GenRepDynkin}
+    Let $Q$ be an $ ADE$-type Dynkin quiver. Then, for any $\#Q_0$-integer partition $\pmb{\lambda}$, $\GenRep(\pmb{\lambda})$ is well-defined.
+\end{prop}
+
+Now, we restrict ourselves to type $A_n$ quivers for some $n \in \mathbb{N}^*$, and we recall useful results. Fix $n \in \mathbb{N}^*$. Let us first recall the combinatorial statement that characterizes all the canonically Jordan recoverable subcategories of type $A_n$.
+
+Two intervals $K,L \in \mathcal{I}_n$ are said to be \new{adjacent} if either $b(K) = e(L)+1$ or $b(L) = e(K)+1$. Note that $K$ and $L$ are not adjacent if $K \cap L \neq \varnothing$, $b(K) > e(L)+1$ or $b(L) > e(K)+1$. We say that an interval subset $\mathscr{J} \subseteq \mathcal{I}_n$ is \new{adjacency-avoiding} if, for all $(K,L) \in \mathscr{J}^2$, the intervals $K$ and $L$ are not adjacent.
+
+\begin{theorem} \label{thm:typeACJRcombi}Let $Q$ be an $A_n$ type quiver. A subcategory $\mathscr{C} \subset \rep(Q)$ is canonically Jordan recoverable if and only if $\Int(\mathscr{C})$ is adjacency-avoiding.
+\end{theorem}
+
+Determining all the maximal adjacency-avoiding subsets for the inclusion of $\mathcal{I}_n$ was the primary key to proving this result. Let us recall the exact statement. Given $\B, \E \subseteq \{1,\ldots n\}$, we define the interval subset \[\opJ(\B,\E) = \{K \in \mathcal{I}_n \mid b(K) \in \B,\ e(K) \in \E\}.\] Given $\A \subset\{1,\ldots,n\}$, we set $\A[1] = \{a+1 \mid a \in \A\}$.
+
+\begin{prop} \label{prop:allmaxadjavo} The following assertions hold:
+    \begin{enumerate}[label = $(\roman*)$,itemsep=1mm]
+        \item For all $\B,\E \subseteq \{1,\ldots,n\}$, if $(\B,\E[1])$ is a set partition of $\{1,\ldots,n+1\}$, then $\opJ(\B,\E)$ is a maximal adjacency-avoiding subset of $\mathcal{I}_n$; and,
+        \item Any maximal adjacency-avoiding subset of $\mathcal{I}$ is equal to $\opJ(\B,\E)$ for some $\B,\E \subseteq \{1,\ldots,n\}$ such that $(\B,\E[1])$ is a set partition of $\{1,\ldots,n+1\}$.
+    \end{enumerate}
+\end{prop}
+
+Another relevant key to proving \cref{thm:typeACJRcombi} is to show that the notion of canonical Jordan recoverability on type $A$ quivers does not depend on the orientation of the quiver. This, indeed, is a consequence of the techniques we will not detail here.
+
+Define the subcategory $\opC(\B,\E) = \Cat(\opJ(\B,\E))$ for any $\B,\E \subseteq \{1,\ldots,n\}$. We can state the following result. 
+
+\begin{theorem} \label{thm:CJRmaxcomb}
+    Let $Q$ be an $A_n$ type quiver. A subcategory $\mathscr{C} \subseteq \rep(Q)$ is a maximal canonically Jordan recoverable subcategory if and only if $\mathscr{C} = \opC(\B,\E)$ for some $\B,\E \subseteq \{1,\ldots,n\}$ such that $(\B,\E[1])$ is a set partition of $\{1,\ldots,n+1\}$.
+\end{theorem}
+
+\begin{ex} \label{ex:A7typeMCJR} By taking back the $A_7$ type quiver $Q$ in \cref{ex:A7typeGS}, we explicit, in \cref{fig:MaxCJR1}, a maximal canonically Jordan recoverable subcategory of $\rep(Q)$ given by the pair $(\B,\E)$ with $\B = \{1,2,3,5\}$ and $\E = \{3,5,6,7\}$.
+    \begin{figure}[!ht]
+    \leavevmode\\[-0.5ex]  % forces heading to appear before content
+    \centering
+    \begin{tikzpicture}
+                \begin{scope}[line width=.3mm, ->, >= angle 60]
+					\node (2) at (0,0){\scalebox{.7}{$\llrr{2}$}};
+					\node (12) at (1,1){\scalebox{.7}{$\llrr{1,2}$}};
+					\node[rectangle,line width=0.2mm,fill=Plum!20,draw] (2345) at (1,-1){\scalebox{.7}{$\llrr{2,5}$}};
+					\node (45) at (0,-2){\scalebox{.7}{$\llrr{4,5}$}};
+                    \node[rectangle,line width=0.2mm,fill=Plum!20,draw] (5) at (-1,-3){\scalebox{.7}{$\llrr{5}$}};
+                    \node[rectangle,line width=0.2mm,fill=Plum!20,draw] (567) at (0,-4){\scalebox{.7}{$\llrr{5,7}$}};
+                    \node (7) at (-1,-5){\scalebox{.7}{
+							$\llrr{7}$}};
+                    \node (56)[rectangle,line width=0.2mm,fill=Plum!20,draw] at (1,-5){\scalebox{.7}{$\llrr{5,6}$}
+                                };
+                     \node (4) at (3,-5){\scalebox{.7}{$\llrr{4}$}};
+                     \node[rectangle,line width=0.2mm,fill=Plum!20,draw] (23) at (5,-5){\scalebox{.7}{$\llrr{2,3}$}};
+                    \node (1) at (7,-5){\scalebox{.7}{$\llrr{1}$}};
+                    \node (456) at (2,-4){\scalebox{.7}{$\llrr{4,6}$}};
+                    \node (234) at (4,-4){\scalebox{.7}{$\llrr{2,4}$}};
+                     \node[rectangle,line width=0.2mm,fill=Plum!20,draw] (123) at (6,-4){\scalebox{.7}{$\llrr{1,3}$}};
+                     \node (4567) at (1,-3){\scalebox{.7}{$\llrr{4;7}$}};
+                     \node[rectangle,line width=0.2mm,fill=Plum!20,draw] (23456) at (3,-3){\scalebox{.7}{$\llrr{2,6}$}};
+                     \node (1234) at (5,-3){\scalebox{.7}{$\llrr{1,4}$}};
+                     \node[rectangle,line width=0.2mm,fill=Plum!20,draw] (3) at (7,-3){\scalebox{.7}{$\llrr{3}$}};
+					\node[rectangle,line width=0.2mm,fill=Plum!20,draw] (12345) at (2,0){\scalebox{.7}{$\llrr{1,5}$}};
+					\node[rectangle,line width=0.2mm,fill=Plum!20,draw] (234567) at (2,-2){\scalebox{.7}{$\llrr{2,7}$}};
+                    \node[rectangle,line width=0.2mm,fill=Plum!20,draw] (123456) at (4,-2){\scalebox{.7}{$\llrr{1,6}$}};
+					\node (34) at (6,-2){\scalebox{.7}{$\llrr{3,4}$}};
+					\node[rectangle,line width=0.2mm,fill=Plum!20,draw] (1234567) at (3,-1){\scalebox{.7}{$\llrr{1,7}$}};
+                    \node[rectangle,line width=0.2mm,fill=Plum!20,draw] (3456) at (5,-1){\scalebox{.7}{$\llrr{3,6}$}};
+                    \node[rectangle,line width=0.2mm,fill=Plum!20,draw] (34567) at (4,0){\scalebox{.7}{$\llrr{3,7}$}};
+                    \node (6) at (6,0){\scalebox{.7}{$\llrr{6}$}};
+                    \node[rectangle,line width=0.2mm,fill=Plum!20,draw] (345) at (3,1){\scalebox{.7}{$\llrr{3,5}$}};
+                    \node (67) at (5,1){\scalebox{.7}{$\llrr{6,7}$}};
+					\draw (2) -- (12);
+					\draw (2) -- (2345);
+					\draw (45) -- (2345);
+					\draw (12) -- (12345);
+					\draw (2345) -- (12345);
+					\draw (2345) -- (234567);
+                    \draw (12345) -- (345);
+                    
+                    
+                    \draw (5) -- (45);
+                    \draw (7) -- (567);
+                    \draw (567) -- (4567);
+                    \draw (4567) -- (234567);
+                    \draw (234567) -- (1234567);
+                    \draw (1234567) -- (34567);
+                    \draw (34567) -- (67);
+                    \draw (56) -- (456);
+                    \draw (456) -- (23456);
+                    \draw (23456) -- (123456);
+                    \draw (123456) -- (3456);
+                    \draw (3456) -- (6);
+                    \draw (4) -- (234);
+                    \draw (234) -- (1234);
+                    \draw (1234) -- (34);
+                    \draw (23) -- (123);
+                    \draw (123) -- (3);
+					
+					\draw (5) -- (567);
+                    \draw (567) -- (56);
+                    \draw (45) -- (4567);
+                    \draw (4567) -- (456);
+                    \draw (456) -- (4);
+                    \draw (234567) -- (23456);
+                    \draw (23456) -- (234);
+                    \draw (234) -- (23);
+                    \draw (12345) -- (1234567);
+                    \draw (1234567) -- (123456);
+                    \draw (123456) -- (1234);
+                    \draw (1234) -- (123);
+                    \draw (123) -- (1);
+                    \draw (345) -- (34567);
+                    \draw (34567) -- (3456);
+                    \draw (3456) -- (34);
+                    \draw (34) -- (3);
+                    \draw (67) -- (6);	
+				\end{scope}
+    \end{tikzpicture}
+    \caption[fragile]{Example of a maximal canonically Jordan recoverable subcategory $\mathscr{C} = \add \left( \protect\begin{tikzpicture}[baseline={(0,-.1)}]
+        \node[rectangle, line width=0.2mm, fill=Plum!20,minimum size=1em,draw] at (0,0){$ $};
+    \end{tikzpicture}\right)$ in $\rep(Q)$, for $Q$ given in \cref{fig:GSCalc1}.}
+    \label{fig:MaxCJR1}
+\end{figure}
+\end{ex}
+
+There is also a representation-theoretic interpretation of \cref{thm:typeACJRcombi}, and it starts by noticing the following result, an obvious consequence from \cref{thm:exttypeA}.
+
+\begin{lemma} \label{lem:adj=arrow} Let $Q$ be an $A_n$ type quiver. Then two intervals $K,L \in \mathcal{I}_n$ are adjacent if and only if one of the following assertions holds:
+\begin{enumerate}[label=$\bullet$, itemsep=1mm]
+    \item there exists a short exact sequence \[\begin{tikzcd}
+	0 & X_K & E  & X_L&  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] such that $E \in \Ind(Q)$; or,
+    \item there exists a short exact sequence \[\begin{tikzcd}
+	0 & X_L & E  & X_K&  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd} \] such that $E \in \Ind(Q)$.
+\end{enumerate}
+\end{lemma}
+
+This allows us to state the following result.
+
+ \begin{theorem} \label{thm:CJRreptheory}
+     Let $Q$ be an $A_n$ type quiver. A subcategory $\mathscr{C} \subset \rep(Q)$ is canonically Jordan recoverable if and only if for any nonsplit short exact sequence \[\begin{tikzcd}
+	0 & E & F  & G &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\] we have $F \notin \Ind(Q)$ whenever $E,G \in \mathscr{C}$.
+ \end{theorem}
+
+\begin{remark}\label{rem:TwoThings} Two things:
+\begin{enumerate}[label=$\bullet$,itemsep=1mm]
+    \item One can restate the result by saying that a subcategory $\mathscr{C} \subset \rep(Q)$ is canonically Jordan recoverable if and only if all the short exact sequences whose extremities are in $\mathscr{C}$ must be in $\mathcal{E}_\diamond$.
+    \item One can do a parallel with the definition of \emph{maximal almost rigid} representations \cite{BGMS23}. A representation $M \in \rep(Q)$ is said to be \new{maximal almost rigid} if for any nonsplit short exact sequence \[\begin{tikzcd}
+	0 & E & F  & G &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\] where $E$ and $G$ are indecomposable summands of $M$, we have $F \in \ind(Q)$.
+\end{enumerate}
+\end{remark}
+
+In the following section, we exhibit a strong link between $\GS$ operators on $\rep(Q)$ for  $\mathcal{E}_\diamond$ and maximal canonically Jordan recoverable subcategories.

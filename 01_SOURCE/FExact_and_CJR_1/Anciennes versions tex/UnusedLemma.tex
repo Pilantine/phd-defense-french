@@ -1,0 +1,136 @@
+\begin{lemma}
+Let $T\in\Tilt(Q)$ and $X \in \rep Q$ indecomposable. Consider $U,E \in \add(T)$ with $U$ indecomposable. If there is any non split short exact sequence
+\[
+\begin{tikzcd}
+\xi:\; 0 & U & E & X & 0
+\arrow[from=1-1, to=1-2]
+\arrow["f", tail, from=1-2, to=1-3]
+\arrow["g", two heads, from=1-3, to=1-4]
+\arrow[from=1-4, to=1-5]
+\end{tikzcd}
+\],
+then $g: E \longrightarrow X$ is the right minimal $add(M)$-approximation of $X$ with $T=M \oplus U$.
+Moreover, if $\Ext^1(X,Y)=0$ for all $Y \in \add(M)$ such that $\Hom(U,Y) \neq 0$, then $f : U \longrightarrow E$ is the left minimal $add(M)$-approximation of $Y$. 
+\end{lemma}
+\Sunny{Je la laisse pour l'instant, mais je crois pouvoir m'en sauver!} 
+\begin{proof}
+ We will show that $E$ is a right $\add(M)$-approximation of $X$. 
+
+\bigskip
+Take any morphism $q : T_0 \longrightarrow X$ with $T_0 \in \add(M)$. We obtain the following commutative pullback diagram: 
+\[\begin{tikzcd}
+	0 & U & PB & T_0 & 0 \\ 0 & U & E & X & 0 ,
+	\arrow[from=1-1, to=1-2]
+	\arrow["f'",tail, from=1-2, to=1-3]
+	\arrow["g'",two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+    \arrow[from=2-1, to=2-2]
+	\arrow["f",tail, from=2-2, to=2-3]
+	\arrow["g",two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+    \arrow[equal,from=1-2, to=2-2]
+	\arrow["h",from=1-3, to=2-3]
+    \arrow["q",from=1-4, to=2-4]
+ \end{tikzcd} \]
+
+Since $U,T \in \add(T)$, the first row splits. Therefore, there is a section $s'$ such that $gs' = \mathbf{1}_{T_0}$. Consider the morphism $b = hs'$, then $gb = ghs' = qg's' = q$. Given that, for any morphsim $q : T_0 \longrightarrow X$ with $T_0 \in \add(M)$, we have $b : T_0 \longrightarrow E$ such that $gb =q$. Hence, $g : E \longrightarrow X$ is a right $\add(M)$-approximation of $X$. We will now show minimality.
+
+\bigskip
+Consider $ e \in \End(E)$ such that $ge = g$. We get $g(1-e)=0$ and by the universal property of kernels, there are unique maps $t : E \longrightarrow U , u \in \End(U)$ such that $1-e = ft$ and $ef=fu$. We illustrate with following commutative diagrams:
+
+\[
+\begin{tikzcd}
+& E\\ 0 & U & E & X & 0
+\arrow["t",dashed,from=1-2, to=2-2]
+\arrow["1-e",from=1-2, to=2-3]
+\arrow[from=2-1, to=2-2]
+\arrow["f", tail, from=2-2, to=2-3]
+\arrow["g", two heads, from=2-3, to=2-4]
+\arrow[from=2-4, to=2-5]
+\end{tikzcd}
+\]
+
+and
+
+\[
+\begin{tikzcd}
+& U\\ 0 & U & E & X & 0
+\arrow["u",dashed,from=1-2, to=2-2]
+\arrow["ef",from=1-2, to=2-3]
+\arrow[from=2-1, to=2-2]
+\arrow["f", tail, from=2-2, to=2-3]
+\arrow["g", two heads, from=2-3, to=2-4]
+\arrow[from=2-4, to=2-5]
+\end{tikzcd}
+\]
+
+\bigskip
+
+By composing $f : U \longrightarrow E$ with $ 1-e : E \longrightarrow E$, we obtain $(1-e)f = f-ef = f-fu = f(1-u)$
+Given that, $ftf = f(1-u)$. By injectivity of $f$, $tf = 1-u$.
+Since $U$ is indecomposable, $\End(U)$ is local, so either $u$ or $1-u$ is an isomorphism. 
+If $1-u$ is an isomorphism, then $(1-u)^{-1}tf = \mathbf{1}_{U}$, making $f$ a section and $\xi$ splitting yielding a contradiction. 
+If $u$ is an isomorphism, then $e(1+fu^{-1}t) = e + efu^{-1}t = e + fuu^{-1}t = e + ft = 1-ft + ft = 1$. We also have $(1+fu^{-1}t)e = e + fu^{-1}te =
+1- ft + fu^{-1}t(1-ft) = 1 - ft +  fu^{-1}t - fu^{-1}tft =  1 - ft +  fu^{-1}t - fu^{-1}(1-u)t = 1 - ft +  fu^{-1}t - f(u^{-1}-1)t = 1 - ft +  fu^{-1}t - fu^{-1}t + ft = 1$. Therefore, $e$ is bijectif and $g : E \longrightarrow X$ is the right minimal $\add(M)$-approximation of $X$.
+ 
+
+\bigskip
+Moreover, assume that $\Ext^1(X,Y)=0$ for all $Y \in \add(M)$ such that $\Hom(U,Y) \neq 0$. 
+
+Take any non zero morphism $p : U \longrightarrow T_0$ with $T_0 \in \add(M)$. We obtain the following commutative pullback diagram: 
+\[\begin{tikzcd}
+	0 & T_0 & PO & X & 0 \\ 0 & U & E & X & 0 ,
+	\arrow[from=1-1, to=1-2]
+	\arrow["f'",tail, from=1-2, to=1-3]
+	\arrow["g'",two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+    \arrow[from=2-1, to=2-2]
+	\arrow["f",tail, from=2-2, to=2-3]
+	\arrow["g",two heads,from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+    \arrow["p",from=2-2, to=1-2]
+	\arrow["h",from=2-3, to=1-3]
+    \arrow[equal,from=1-4, to=2-4]
+ \end{tikzcd} \]
+
+Since $\Hom(U,T_0) \neq 0$, then $\Ext(X,T_0)=0$ and the first row splits. Therefore, there is a retraction $r'$ such that $r'f' = \mathbf{1}_{T_0}$. Consider the morphism $b = r'h$, then $bf = r'hf = r'f'p = p$. Given that, for any morphsim $p : U \longrightarrow T_0$ with $T_0 \in \add(M)$, we have $b : E \longrightarrow T_0$ such that $bf =p$. Hence, $f : U \longrightarrow E$ is a right $\add(M)$-approximation of $X$. We will now show minimality.
+
+\bigskip
+Consider $ e \in \End(E)$ such that $ef = f$. We get $(e-1)f=0$ and by the universal property of cokernels, there are unique maps $t : X \longrightarrow E , v \in \End(X)$ such that $e-1 = tg$ and $ge=vg$. We illustrate with following commutative diagrams:
+
+\[
+\begin{tikzcd}
+& &&E\\ 0 & U & E & X & 0
+\arrow["t",dashed,from=2-4, to=1-4]
+\arrow["e-1",from=2-3, to=1-4]
+\arrow[from=2-1, to=2-2]
+\arrow["f", tail, from=2-2, to=2-3]
+\arrow["g", two heads, from=2-3, to=2-4]
+\arrow[from=2-4, to=2-5]
+\end{tikzcd}
+\]
+
+and
+
+\[
+\begin{tikzcd}
+& &&E\\ 0 & U & E & X & 0
+\arrow["v",dashed,from=2-4, to=1-4]
+\arrow["ge",from=2-3, to=1-4]
+\arrow[from=2-1, to=2-2]
+\arrow["f", tail, from=2-2, to=2-3]
+\arrow["g", two heads, from=2-3, to=2-4]
+\arrow[from=2-4, to=2-5]
+\end{tikzcd}
+\]
+
+\bigskip
+
+By composing $e-1 : E \longrightarrow E$ with $ g : E \longrightarrow X$, we obtain $g(e-1) = ge-g = vg-g = -(1-v)g$
+Given that, $gtg = -(1-v)g$. By surjectivity of $g$, $gt = -(1-v)$.
+Since $X$ is indecomposable, $\End(X)$ is local, so either $v$ or $1-v$ is an isomorphism. 
+If $1-v$ is an isomorphism, then $g(-t(1-v)^{-1}) = \mathbf{1}_{X}$, making $g$ a retraction and $\xi$ splitting yielding a contradiction. 
+If $v$ is an isomorphism, then $e(1-tv^{-1}g) = e  -etu^{-1}g = 1+tg  -(1+tg)tu^{-1}g = 1+tg - tv^{-1}g - tgtv^{-1}g  = 1+tg - tv^{-1}g + t(1-v)v^{-1}g = 1+tg  -tv^{-1}g + tv^{-1}g - tvv^{-1}g = 1 - tg + tg =1$. We also have $(1-tu^{-1}g)e = e - tu^{-1}ge =
+1+ tg - tu^{-1}vg = 1 - tg -  tg = 1$. Therefore, $e$ is bijectif and $f : U \longrightarrow X$ is the left minimal $\add(M)$-approximation of $U$.
+ 
+\end{proof}

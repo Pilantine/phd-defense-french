@@ -1,0 +1,272 @@
+\pdfoutput=1
+\documentclass{amsart}
+\usepackage{calc}
+\usepackage[nomessages]{fp}
+\usepackage{tikz,amsmath,amssymb}
+%\usepackage[showframe]{geometry}
+\usepackage{tkz-euclide} 
+\usetikzlibrary{calc,arrows,decorations.markings, patterns}
+\usepackage{quiver}
+\usepackage[english]{babel}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage[all]{xy}
+\usepackage{ stmaryrd }
+\usepackage{ mathrsfs }
+\theoremstyle{plain} 
+\newtheorem{scholie}{Scholie}
+\usepackage{epsfig}
+\usepackage{lmodern}
+\usepackage{eurosym}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsbsy}
+\usepackage{rotating}
+\usepackage[noabbrev,capitalise]{cleveref}
+\usepackage{float}
+\usepackage{comment}
+\usepackage{stackengine,scalerel}
+\stackMath
+\def\Tleq{\ThisStyle{\mathrel{%
+  \stackinset{r}{.7pt+.15\LMpt}{t}{.1\LMpt}{\rule{.4pt}{1.1\LMex+.2ex}}{\SavedStyle\leqslant}%
+}}}
+
+\def\TleqE{\ThisStyle{\mathrel{%
+  \stackinset{r}{6pt+.15\LMpt}{t}{.1\LMpt}{\rule{.4pt}{1.1\LMex+.2ex}}{\SavedStyle\leqslant_\mathcal{E}}%
+}}}
+
+\def\TleqEunder{\ThisStyle{\mathrel{%
+  \stackinset{r}{5.4pt+.15\LMpt}{t}{.1\LMpt}{\rule{.4pt}{1.1\LMex+.2ex}}{\SavedStyle\leqslant_\mathcal{E}}%
+}}}
+
+\def\TldotE{\ThisStyle{\mathrel{%
+  \stackinset{r}{6pt+.15\LMpt}{t}{.1\LMpt}{\rule{.4pt}{1.1\LMex+.2ex}}{\SavedStyle\lessdot_\mathcal{E}}%
+}}}
+
+\def\TldotEunder{\ThisStyle{\mathrel{%
+  \stackinset{r}{5.4pt+.15\LMpt}{t}{.1\LMpt}{\rule{.4pt}{1.1\LMex+.2ex}}{\SavedStyle\lessdot_\mathcal{E}}%
+}}}
+
+\definecolor{midnightblue}{rgb}{0.1, 0.1, 0.44}
+\definecolor{plum}{rgb}{0.56, 0.27, 0.52}
+\definecolor{Plum}{rgb}{0.56, 0.27, 0.52}
+\definecolor{patriarch}{rgb}{0.5, 0.0, 0.5}
+\definecolor{darkgreen}{rgb}{0.0, 0.2, 0.13}
+\definecolor{darkcerulean}{rgb}{0.03, 0.27, 0.49}
+\definecolor{jade}{rgb}{0.0, 0.66, 0.42}
+\definecolor{bleudefrance}{rgb}{0.19, 0.55, 0.91}
+\definecolor{lava}{rgb}{0.81, 0.06, 0.13}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=darkcerulean,
+	citecolor=jade,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdfpagemode=FullScreen,
+}
+
+\newcommand{\ccong}{\mathbin{\rotatebox[origin=c]{90}{$\cong$}}}
+\newcommand{\rep}{\operatorname{rep}}
+\newcommand{\Cat}{\operatorname{Cat}}
+\newcommand{\Int}{\operatorname{Int}}
+\newcommand{\GenJF}{\operatorname{GenJF}}
+\newcommand{\GenRep}{\operatorname{GenRep}}
+\newcommand{\JF}{\operatorname{JF}}
+\newcommand{\vJF}{\pmb{\operatorname{JF}}}
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\add}{\operatorname{add}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\IIm}{\operatorname{Im}}
+\newcommand{\mult}{\operatorname{mult}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\op}{\operatorname{op}}
+\newcommand{\ind}{\operatorname{ind}}
+\newcommand{\refl}{\operatorname{refl}}
+\newcommand{\GK}{\operatorname{\mathsf{GK}}}
+\newcommand{\NEnd}{\operatorname{\mathsf{N}End}}
+\newcommand{\wt}{\operatorname{\mathsf{wt}}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\vdim}{\operatorname{\pmb{\dim}}}
+\newcommand{\Vect}{\operatorname{Vect}}
+\newcommand{\Adds}{\operatorname{AddS}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathbf{F}}
+\renewcommand{\L}{\mathbf L}
+\newcommand{\R}{\mathbf R}
+\newcommand{\A}{\mathbf A}
+\newcommand{\B}{\mathbf B}
+\newcommand{\E}{\mathbf E}
+\newcommand{\intp}{\operatorname{\mathbf{int}}}
+\newcommand{\RSK}{\operatorname{RSK}}
+\newcommand{\tog}{\operatorname{tog}}
+\newcommand{\compl}{\operatorname{compl}}
+\newcommand{\eff}{\operatorname{eff}}
+\newcommand{\RPP}{\operatorname{RPP}}
+\newcommand{\Tilt}{\operatorname{Tilt}}
+\renewcommand{\Box}{\operatorname{Box}}
+\newcommand{\Fer}{\operatorname{Fer}}
+\newcommand{\SSYT}{\operatorname{SSYT}}
+\newcommand{\SYT}{\operatorname{SYT}}
+\newcommand{\AR}{\operatorname{AR}}
+\newcommand{\Mult}{\operatorname{Mult}}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\vGL}{\pmb{\operatorname{GL}}}
+\newcommand{\pdim}{\operatorname{pdim}}
+\newcommand{\proj}{\operatorname{proj}}
+\newcommand{\inj}{\operatorname{inj}}
+\newcommand{\Gen}{\operatorname{Gen}}
+\newcommand{\Rad}{\operatorname{Rad}}
+\newcommand{\Sub}{\operatorname{Sub}}
+\newcommand{\GS}{\operatorname{GS}}
+\newcommand{\SG}{\operatorname{SG}}
+\newcommand{\opC}{\operatorname{\pmb{\mathscr{C}}}}
+\newcommand{\opJ}{\operatorname{\pmb{\mathscr{J}}}}
+\newcommand{\opT}{\operatorname{\pmb{T}}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\epip}{ \xymatrix{   \ar@{-->>}[r] &  \\} }
+\newcommand{\epi}{ \xymatrix{   \ar@{>>}[r] &  \\} }
+\newcommand{\p}{ \xymatrix{   \ar@{-->}[r] &  \\} }
+\newcommand{\Exact}{\pmb{\operatorname{Ext}}}
+\AtEndEnvironment{ex}{\renewcommand{\qedsymbol}{}}
+\newcommand{\CK}{\mathrm{CK}}
+
+
+\usepackage{stackengine,scalerel}
+\stackMath
+\def\domleq{\ThisStyle{\mathrel{%
+  \stackinset{r}{.75pt+.15\LMpt}{t}{.1\LMpt}{\rule{.3pt}{1.1\LMex+.2ex}}{\SavedStyle\leqslant}%
+}}}
+
+
+\author[B.~Dequêne]{Benjamin Dequêne}
+\address[B.~Dequêne]{School of Mathematics, University of Leeds}
+\email{b.d.dequene@leeds.ac.uk}
+
+\author[S.~Roy]{Sunny Roy}
+\address[S.~Roy]{Département de mathématiques, Université de Sherbrooke}
+\email{sunny.roy@usherbrooke.ca}
+
+\date{\today}
+
+\title[Exact struc. and CJR categories in type $A$]{Exact structures and maximal canonically Jordan recoverable subcategories for modules over type $A$ algebras}
+
+\usepackage{thmtools}
+\declaretheorem[numberwithin=section,name=Theorem,
+refname={Theorem,Theorems},
+Refname={Theorem,Theorems}]{theorem}
+\declaretheorem[numberlike=theorem,name=Lemma,
+refname={Lemma,Lemmas},
+Refname={Lemma,Lemmas}]{lemma}
+\declaretheorem[numberlike=theorem,name=Proposition,
+refname={Proposition,Propositions},
+Refname={Proposition,Propositions}]{prop}
+\declaretheorem[numberlike=theorem,name=Corollary,
+refname={Corollary,Corollaries},
+Refname={Corollary,Corollaries}]{cor}
+\declaretheorem[numberlike=theorem,name=Lemma,
+refname={Conjecture,Conjectures},
+Refname={Conjecture,Conjectures}]{conj}
+
+\declaretheorem[style=definition,numberlike=theorem,name=Definition,
+refname={Definition,Definitions},
+Refname={Definition,Definitions}]{definition}
+\declaretheorem[style=definition,numberlike=theorem,name=Convention,
+refname={Convention,Conventions},
+Refname={Convention,Conventions}]{conv}
+
+\declaretheorem[style=definition,numberlike=theorem,name=Example,
+refname={Example,Examples},
+Refname={Example,Examples}]{example}
+\declaretheorem[style=definition,numberlike=theorem,name=Example,
+refname={Example,Examples},
+Refname={Example,Examples}]{ex}
+
+\declaretheorem[style=remark,numberlike=theorem,name=Remark,
+refname={Remark,Remarks},
+Refname={Remark,Remarks}]{remark}
+\declaretheorem[style=remark,numberlike=theorem,name=Remarks,
+refname={Remarks,Remarks},
+Refname={Remarks,Remarks}]{remarks}
+
+\usepackage{todonotes}
+\newcommand{\benj}[1]{\todo[color=Plum!50]{\textbf{BenJ ---} #1}}
+\newcommand{\ibenj}[1]{\todo[color=Plum!50,inline]{\textbf{BenJ --- }#1 \hfill}}
+\newcommand{\Sunny}[1]{\todo[color=jade!50]{\textbf{Sunny ---} #1}}
+
+\newcommand{\TB}[1]{\todo[color=gray!50]{\textbf{T. B. ---} #1}}
+\newcommand{\iTB}[1]{\todo[color=gray!50,inline]{\textbf{T. B. --- }#1 \hfill}}
+
+
+\newcommand{\new}[1]{\textit{\textbf{\color{patriarch}{#1}}}}
+\newcommand{\llrr}[1]{\llbracket #1 \rrbracket}
+
+\setcounter{MaxMatrixCols}{17}
+
+\begin{document}
+
+\begin{abstract}
+On one hand, exact structures were introduced by D. Quillen in the '70s. They can be defined as collections of short exact sequences in a fixed abelian category satisfying additional properties. 
+
+On the other hand, in a recent work, A. Garver, R. Patrias, and H. Thomas introduced Jordan recoverability. Given a bounded quiver $(Q,R)$, a full additive subcategory of $\rep(Q,R)$ is said to be Jordan recoverable if any $X \in \mathscr{C}$ can be recovered, up to isomorphism, from the Jordan form of its generic nilpotent endomorphisms. Such a subcategory $\mathscr{C}$ is said to be canonically Jordan recoverable if, moreover, there exists a precise algebraic procedure that allows one to get back $X \in \mathscr{C}$ from that same Jordan form data.
+
+We introduce a new family of operators, called Gen-Sub operators $\GS_\mathcal{E}$, parametrized by the exact structures $\mathcal{E}$ of abelian categories. After showing some properties of those operators in hereditary abelian categories, by focusing on the setting of modules over type $A$ quivers endowed with the diamond exact structure $\mathcal{E}_\diamond$, we establish that the maximal canonically Jordan recoverable subcategories are precisely of the form $\operatorname{GS}_{\mathcal{E}_\diamond}(T)$ for some tilting object $T$.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+
+\section{Introduction}
+\label{sec:Intro}
+\input{Intro.tex}
+
+\section{Quiver representations}
+\label{sec:Quiver}
+\input{Quiver.tex}
+
+\section{Gen-Sub operators on exact categories}
+\label{sec:ExStr}
+%\input{Exact.tex}
+%modification en cours
+\input{Exact3.tex}
+
+\section{Jordan recoverability}
+\label{sec:JR}
+\input{JRandCJR2.tex}
+
+\section{Type ADE algebras case}
+\label{sec:TypeA}
+%\input{TypeA.tex}
+%modifications en cours
+\input{TypeA3.tex}
+
+
+\section{To go further}
+\label{sec:further}
+\input{Further.tex}
+
+\section*{Acknowledgements}
+
+The authors extend their gratitude to the organizers of the \emph{CHARMS Summer School}, where our discussions on this project began, namely J. Besson, P. Bodin, E.D. Børve, R. Canesin, M. Garcia, E. Gupta, M. Schoonheere, and V. Soto. They would like to express their particular appreciation to M. Garcia and M. Schoonheere for the numerous further discussions they had on this project. They thank T. Brüstle and Y. Palu for their helpful advice. They also acknowledge \textit{CHARMS program grant (ANR-19CE40-0017-02)} for their funding support. 
+
+B.D. would like to acknowledge the \textit{Engineering and Physical Sciences Research Council (EP/W007509/1)} for their partial funding support. 
+
+S.R. is supported by the B2X FRQNT grant.
+
+%\nocite{*}
+\bibliography{Article1}
+\bibliographystyle{alpha}
+
+\end{document}

@@ -1,0 +1,5 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Motivation: Jordan Recoverability and Canonical Jordan Recoverability}{3}{0}{1}
+\beamer@sectionintoc {2}{The Diamond Exact Structure $\mathcal {E}_\diamond $}{28}{0}{2}
+\beamer@sectionintoc {3}{The $\operatorname {GS}_\mathcal {E}$ Operator \& Properties\\ \normalsize (First Main Theorem)}{46}{0}{3}
+\beamer@sectionintoc {4}{Relative Mutations \& Tilting Equivalence\\ \normalsize (Second Main Theorem)}{71}{0}{4}

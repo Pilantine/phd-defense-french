@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.slidev/
+02_PRESENTATION/manim/media/
+03_MANIM/
+*.mp4
+*.gif

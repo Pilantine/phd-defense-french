@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd 02_PRESENTATION && npm install && npx slidev build --base /",
+  "outputDirectory": "02_PRESENTATION/dist",
+  "installCommand": "echo skip"
+}

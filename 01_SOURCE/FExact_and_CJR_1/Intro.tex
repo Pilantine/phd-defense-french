@@ -1,0 +1,82 @@
+\pagestyle{plain}
+
+\subsection{Exact structures on hereditary abelian categories}
+\label{ss:ExtStrHAbCat}
+
+Fix $\mathscr{A}$ an abelian category. An \new{exact structure} on an abelian category \(\mathscr{A}\) is a collection \(\mathcal{E}\) of short exact sequences of the form
+\[\begin{tikzcd}
+	0 & A & B  & C &  0
+	\arrow[from=1-1, to=1-2]
+	\arrow["f",tail, from=1-2, to=1-3]
+	\arrow["g",two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+where \(f\) is an \(\mathcal{E}\)-monomorphism, \(g\) is an \(\mathcal{E}\)-epimorphism, and the sequence adheres to axioms ensuring closure under specific categorical operations (see \cref{def:exact} for details). Originally introduced by D. Quillen in \cite{Q73}, they provide an axiomatic framework that extends the utility of homological algebra techniques to a context constrained by a predefined class of short exact sequences. This framework is notably versatile, allowing exact structures to be characterized in multiple ways: as subfunctors of the bifunctor \(\text{Ext}^1_{\mathscr{A}}\), through projective objects relative to the chosen structure, or via the inclusion of specific Auslander-Reiten sequences. 
+
+A category \(\mathscr{A}\) is \new{hereditary} if it satisfies \(\text{Ext}^i_{\mathscr{A}}(X, Y) = 0\) for all objects \(X, Y \in \mathscr{A}\) and all \(i \geq 2\). Vanishing of higher extensions simplifies homological analysis, as all extensions are captured by \(\text{Ext}^1\). In this paper, we focus on hereditary abelian categories, and, more specifically, on the category \(\text{rep}(Q)\) of finite-dimensional representations of some $ADE$ Dynkin type quiver \(Q\). In this setting, exact structures enable us to control which sequences are deemed ``admissible", thereby isolating subcategories with distinct algebraic and combinatorial features. 
+
+While the standard maximal exact structure on an abelian category encompasses all short exact sequences, alternative structures, such as the \new{diamond exact structure} \(\mathcal{E}_\diamond\) on $\rep(Q)$, introduced in \cite{BHRS24} (see \cref{def:Ediamond}), allows us to refine our focus to sequences that reflect the combinatorial properties of type $A$ quivers.
+
+A pivotal concept in this work is the \new{Gen-Sub operator} \(\text{GS}_\mathcal{E}\), which, given an exact structure \(\mathcal{E}\) and a subcategory \(\mathscr{C} \subseteq \mathscr{A}\), constructs the smallest subcategory containing \(\mathscr{C}\) that is closed under operations such as taking \(\mathcal{E}\)-subobjects and \(\mathcal{E}\)-quotients (see \cref{ss:GenSuboperators} for a formal definition). In the context of hereditary abelian categories, \(\text{GS}_\mathcal{E}\) iteratively builds subcategories by incorporating terms from \(\mathcal{E}\)-exact sequences, offering a systematic method to generate subcategories with stability properties. 
+
+A subcategory $\mathscr{C} \subseteq \mathscr{A}$ will be called
+\new{$\mathcal{E}$-adapted} if it behaves well with respect to the exact
+structure $\mathcal{E}$, allowing us to relate classical constructions to
+their relative counterparts. More precisely, $\mathscr{C}$ is
+$\mathcal{E}$-adapted if every short exact sequence in $\mathscr{C}$ is
+$\mathcal{E}$-exact, that is, it belongs to the exact structure $\mathcal{E}$.
+A formal definition will be given later (see Definition \ref{def:Eadpted}).
+
+
+
+\subsection{Canonical Jordan recoverability}
+\label{ss:CJRintro}
+
+A. Garver, R. Patrias, and H. Thomas \cite{GPT19} introduced the notion of Jordan recoverability. 
+
+Fix $\mathbb{K}$ an algebraically closed field. Consider $(Q,R)$ a finite connected bounded quiver. Let $E$ be a finite-dimensional representation of $Q$ over $\mathbb{K}$. We study the set $\NEnd(E)$ of nilpotent endomorphisms of $E$. Any $N \in \NEnd(E)$ induces, at each vertex $q$ of $Q$, a nilpotent endomorphism $N_q$ of $E_q$. We can extract from $N$ a sequence of integer partitions $\lambda_q \vdash \dim(E_q)$ from the Jordan block sizes of the Jordan form of each $N_q$. Write $\vJF(N) = (\lambda_q)_{q \in Q_0}$. There exists an open dense set (for the Zariski topology) of $\NEnd(E)$ on which $\vJF$ is constant. Denote by $\GenJF(E)$ this constant, and we refer to it as the \new{generic Jordan form} of $E$.
+
+The map $\GenJF$ is an invariant on the representations of $(Q,R)$, but not a complete one. A full subcategory $\mathscr{C}$, closed under sums and summands, is said to be \new{Jordan recoverable} whenever $\GenJF$ is complete on representations in $\mathscr{C}$.
+
+Usually, checking whether a subcategory is Jordan recoverable is not an easy task. Under some assumptions, we can define an algebraic inverse to $\GenJF$ restricted to a fixed subcategory. We say that a subcategory is \new{canonically Jordan recoverable} if such an algebraic inverse exists. See \cref{ss:CJR} for more details.
+
+In the case where $Q$ is an $A_n$ type quiver, and $R = \varnothing$, we have the following characterization of canonically Jordan recoverable subcategories.
+
+\begin{theorem}[{\cite{D23}}] \label{thm:CJRAlg}
+    Let $Q$ be an $A_n$ type quiver for some $n \in \mathbb{N}^*$ and $\mathscr{C}  \subseteq \rep(Q)$ subcategory closed under sums and summands. $\mathscr{C}$ is canonically Jordan recoverable if and only if for any nonsplit short exact sequence \[\begin{tikzcd}
+	0 & E & F  & G &  0,
+	\arrow[from=1-1, to=1-2]
+	\arrow[tail, from=1-2, to=1-3]
+	\arrow[two heads,from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\] whenever $E,G\in \mathscr{C}$, the representation $F$ must be decomposable.
+\end{theorem}
+
+There exists a combinatorial characterization of such a subcategory $\mathscr{C}$ based on the behavior of the intervals of $\{1,\ldots,n\}$ corresponding bijectively to the indecomposable representations in $\mathscr{C}$. We even have a precise description of the maximal ones for inclusion. We refer to \cref{ss:CJR} for more details.
+
+\subsection{Main results}
+\label{ss:Main}
+
+First, we study the Gen-Sub operators applied to the tilting objects of $\mathscr{A}$, and we establish the following result.
+
+\begin{theorem}
+\label{thm:maximalmain}
+ Let $T \in \mathscr{A}$ be a tilting object. Then $\GS_\mathcal{E}(T)$ is the unique maximal $\mathcal{E}$-adapted subcategory of $\mathscr{A}$ closed under extensions which contains $T$.
+\end{theorem}
+
+Then, by considering $Q$ an $ADE$ Dynkin type quiver, and by fixing an exact structure $\mathcal{E}$ on $\rep(Q)$, we defined $\mathcal{E}$-mutations on tilting objects (see \cref{ss:GSandTiltmut}), and an equivalence relation $\approx_\mathcal{E}$ on tilting objects of $\rep(Q)$ as follows. Given two tilting objects $T,T' \in \rep(Q)$, we write $T \approx_\mathcal{E} T'$ whenever $T'$ can be obtained from $T$ by applying a finite sequence of $\mathcal{E}$-mutations. We write $[T]_{\approx_{\mathcal{E}}}$ for the equivalence class of $T$ for $\approx_\mathcal{E}$. We show that, for any tilting object $T \in \rep(Q)$, we can describe $\GS_\mathcal{E}(T)$ as the category additively generated by the tilting objects in $[T]_{\approx_{\mathcal{E}}}$ (see \cref{th:Treaching}).
+
+Reducing ourselves to type $A$ quiver representations, we combine the exact structure point of view with the different descriptions known for the maximal canonically Jordan recoverable subcategories to prove conjectures stated in \cite{D23}, and hence, strongly link those categories to tilting theory. 
+
+\begin{theorem} \label{thm:main1}
+    Let $Q$ be an $A_n$ type quiver for some $n \in \mathbb{N}^*$. A subcategory $\mathscr{C} \subseteq \rep(Q)$ is a maximal canonically Jordan recoverable subcategory if and only if there exists a tilting representation $T \in \rep(Q)$ such that $\mathscr{C} = \GS_{\mathcal{E}_\diamond}(T)$. Moreover, for such a tilting representation $T$, we have \[\mathscr{C} = \add \left(\bigoplus_{T' \in [T]_{\approx_{\mathcal{E}_\diamond}}} T'\right).\]
+\end{theorem}
+
+\subsection{Outline of the paper}
+\label{ss:Outline} We begin, in \cref{sec:Quiver}, by laying crucial recalls to set our background framework: quiver representations and, specifically, type $A$ quiver representations. Those recalls enable us to incorporate relevant examples throughout the article, which will gradually lead us to our main results.
+
+In \cref{sec:ExStr}, given an abelian category $\mathscr{A}$ endowed with an exact structure $\mathcal{E}$, we introduce the Gen-Sub operators which allow one to construct nicely behaved subcategories relative to $\mathcal{E}$ from any subcategory of $\mathscr{A}$. In particular, by assuming that $\mathscr{A}$ is hereditary and Krull--Schmidt, we show that they preserve both $\mathcal{E}$-adaptation and extension-closure properties. We also prove \cref{thm:maximalmain}.
+
+Afterwards, in \cref{sec:JR}, we recall the notions of Jordan recoverability and canonical Jordan recoverability for subcategories of representations over bounded quivers, and we recall the main results from previous works on type $A$ quivers, namely, a combinatorial and an algebraic characterization of canonically Jordan recoverable subcategories of type $A$ quiver representations.
+
+This brings us to \cref{sec:TypeA} where we gather results from previous sections to prove \cref{thm:main1}. We first study the link between $\mathcal{E}$-mutations and $\GS_\mathcal{E}$, for any given exact structure $\mathcal{E}$, on tilting representations of any $ADE$ Dynkin type quiver, before focusing on type $A$ quivers for using results on canonically Jordan recoverable subcategories. Finally, in \cref{sec:further}, we discuss directions of research that we will likely pursue in the near future.
